@@ -1,0 +1,15 @@
+$primary: "blue";
+@import 'ember-paper';
+
+
+.md-button.md-icon-button.md-button-header-right {
+  position: absolute;
+  right: 25px;
+  bottom: -25px;
+}
+
+.card-header {
+  padding: 20px 16px;
+}
+
+

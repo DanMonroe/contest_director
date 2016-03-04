@@ -1,0 +1,45 @@
+{{#paper-card}}
+    {{#paper-toolbar class="card-header"}}
+        Contests
+        {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" action="addContest"}}{{paper-icon icon="add"}}{{/paper-button}}
+    {{/paper-toolbar}}
+
+
+    {{#paper-card-content}}
+
+
+        {{#paper-list}}
+            {{#paper-item}}
+                <div class="md-list-item-text">
+                    <h3>{{#link-to "contest" 1}}2016 AMA Helicopter Nationals{{/link-to}}</h3>
+                    <p>
+                        08/01/2016 Muncie, IN
+                    </p>
+                </div>
+            {{/paper-item}}
+            {{paper-divider}} {{! OR {{paper-divider inset=true}}
+
+            {{#paper-item}}
+                <div class="md-list-item-text">
+                    <h3>2016 AMA Helicopter Nationals</h3>
+                    <p>
+                        Test
+                    </p>
+                </div>
+            {{/paper-item}}
+            {{paper-divider}}
+
+            {{#paper-item}}
+                <div class="md-list-item-text">
+                    <h3>2016 AMA Helicopter Nationals</h3>
+                    <p>
+                        Test
+                    </p>
+                </div>
+            {{/paper-item}}
+            {{paper-divider}}
+
+        {{/paper-list}}
+
+    {{/paper-card-content}}
+{{/paper-card}}
