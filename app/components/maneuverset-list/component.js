@@ -11,24 +11,24 @@ export default Ember.Component.extend({
     isEditing: false,
 
     actions: {
-        saveContest() {
-            console.log("saving");
+        saveManeuverSet() {
+            console.log("saving maneuverset");
             let name = this.get("name");
             console.log(name);
 
             if(isPresent(name)) {
-                var newContest = this.get("store").createRecord('contest', {
+                var newManeuverSet = this.get("store").createRecord('maneuverset', {
                     name: name
                 });
 
-                newContest.save().then(() => {
+                newManeuverSet.save().then(() => {
                     this.toggleProperty("isEditing");
                 });
 
             }
 
         },
-        addContest() {
+        addManeuverSet() {
             this.toggleProperty("isEditing");
         }
     }

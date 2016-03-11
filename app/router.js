@@ -15,6 +15,7 @@ Router.map(function() {
       path: '/pilotclass/:pilotclass_id/rounds'
     });
   });
+  this.route('maneuversets');
 });
 
 export default Router;

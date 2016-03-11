@@ -26,5 +26,30 @@ export default function () {
     this.get('/api/contests', (schema) => {
         return schema.contest.all();
     });
+
+    this.post('/api/contests');
+
+    this.get('/api/aircrafttypes', (schema) => {
+        return schema.aircrafttype.all();
+    });
+
+    this.get('/api/pilotclasses', (schema) => {
+        return schema.pilotclass.all();
+    });
+
+    this.get('/api/maneuversets', (schema) => {
+        return schema.maneuverset.all();
+    });
+
+    this.get('/api/maneuvers', (schema) => {
+        return schema.maneuver.all();
+    });
+
+    this.get('/api/rounds', (schema) => {
+        return schema.round.all();
+    });
+
+
+
 }
 

@@ -7,39 +7,26 @@
 
     {{#paper-card-content}}
 
-
+{{#if isEditing}}
+    {{paper-input label="Contest Name" value=name required=true required-errortext="Contest name is required"}}
+    {{#paper-button raised=true primary=true action="saveContest" target=component}}Save Contest{{/paper-button}}
+{{else}}
         {{#paper-list}}
-            {{#paper-item}}
-                <div class="md-list-item-text">
-                    <h3>{{#link-to "contest" 1}}2016 AMA Helicopter Nationals{{/link-to}}</h3>
-                    <p>
-                        08/01/2016 Muncie, IN
-                    </p>
-                </div>
-            {{/paper-item}}
-            {{paper-divider}} {{! OR {{paper-divider inset=true}}
+            {{#each content as |contest|}}
+                {{#paper-item}}
+                    <div class="md-list-item-text">
+                        <h3>{{#link-to "contest" contest.id}}{{contest.name}}{{/link-to}}</h3>
+                        <p>
+                            08/01/2016 Muncie, IN
+                        </p>
+                    </div>
+                {{/paper-item}}
+                {{paper-divider}} {{! OR {{paper-divider inset=true}}
 
-            {{#paper-item}}
-                <div class="md-list-item-text">
-                    <h3>2016 AMA Helicopter Nationals</h3>
-                    <p>
-                        Test
-                    </p>
-                </div>
-            {{/paper-item}}
-            {{paper-divider}}
-
-            {{#paper-item}}
-                <div class="md-list-item-text">
-                    <h3>2016 AMA Helicopter Nationals</h3>
-                    <p>
-                        Test
-                    </p>
-                </div>
-            {{/paper-item}}
-            {{paper-divider}}
+            {{/each}}
 
         {{/paper-list}}
+{{/if}}
 
     {{/paper-card-content}}
 {{/paper-card}}

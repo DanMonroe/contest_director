@@ -1,0 +1,29 @@
+{{#paper-card}}
+    {{#paper-toolbar class="card-header"}}
+        Maneuver Sets
+        {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" action="addManeuverSet"}}{{paper-icon icon="add"}}{{/paper-button}}
+    {{/paper-toolbar}}
+
+
+    {{#paper-card-content}}
+
+        {{#if isEditing}}
+            {{paper-input label="Maneuver Set Name" value=name required=true required-errortext="Maneuver Set name is required"}}
+            {{#paper-button raised=true primary=true action="saveManeuverSet" target=component}}Save Maneuver Set{{/paper-button}}
+        {{else}}
+            {{#paper-list}}
+                {{#each content as |maneuverset|}}
+                    {{#paper-item}}
+                        <div class="md-list-item-text">
+                            <h3>{{maneuverset.name}}</h3>
+                        </div>
+                    {{/paper-item}}
+                    {{paper-divider}} {{! OR {{paper-divider inset=true}}
+
+                {{/each}}
+
+            {{/paper-list}}
+        {{/if}}
+
+    {{/paper-card-content}}
+{{/paper-card}}
