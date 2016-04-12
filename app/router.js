@@ -16,6 +16,7 @@ Router.map(function() {
     });
   });
   this.route('maneuversets');
+  this.route('maneuvers', {path: '/maneuverset/:maneuverset_id/maneuvers'});
 });
 
 export default Router;

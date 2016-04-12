@@ -1,0 +1,30 @@
+{{#paper-card}}
+    {{#paper-toolbar class="card-header"}}
+        Maneuvers
+        {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" action="addManeuver"}}{{paper-icon icon="add"}}{{/paper-button}}
+    {{/paper-toolbar}}
+
+
+    {{#paper-card-content}}
+
+        {{#if isEditing}}
+            {{paper-input label="Maneuver Name" value=name required=true required-errortext="Maneuver name is required"}}
+            {{#paper-button raised=true primary=true action="saveManeuver" target=component}}Save Maneuver{{/paper-button}}
+        {{else}}
+            {{maneuverset.pilotclass.name}} - {{maneuverset.name}}
+            {{#paper-list}}
+                {{#each content as |maneuver|}}
+                    {{#paper-item}}
+                        <div class="md-list-item-text">
+                            <h3>{{maneuver.name}}</h3>
+                        </div>
+                    {{/paper-item}}
+                    {{paper-divider}} {{! OR {{paper-divider inset=true}}
+
+                {{/each}}
+
+            {{/paper-list}}
+        {{/if}}
+
+    {{/paper-card-content}}
+{{/paper-card}}

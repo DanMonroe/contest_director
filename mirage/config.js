@@ -40,9 +40,22 @@ export default function () {
     this.get('/api/maneuversets', (schema) => {
         return schema.maneuverset.all();
     });
+    this.get('/api/maneuversets/:id');
 
-    this.get('/api/maneuvers', (schema) => {
-        return schema.maneuver.all();
+    //this.get('/api/maneuvers', (schema) => {
+    //    return schema.maneuver.all();
+    //});
+
+    this.get('/api/maneuvers', function (db, request) {
+        let maneuvers = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            maneuvers = db.maneuver.all();
+        } else {
+            let filteredManeuvers = request.queryParams['filter[maneuversetId]'];
+            maneuvers = db.maneuver.where({maneuversetId: filteredManeuvers});
+        }
+
+        return maneuvers;
     });
 
     this.get('/api/rounds', (schema) => {

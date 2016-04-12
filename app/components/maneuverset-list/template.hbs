@@ -15,7 +15,7 @@
                 {{#each content as |maneuverset|}}
                     {{#paper-item}}
                         <div class="md-list-item-text">
-                            <h3>{{maneuverset.name}}</h3>
+                            <h3>{{#link-to "maneuvers" maneuverset.id}}{{maneuverset.name}}{{/link-to}}</h3>
                         </div>
                     {{/paper-item}}
                     {{paper-divider}} {{! OR {{paper-divider inset=true}}
