@@ -3,7 +3,7 @@
         {{#paper-toolbar class="site-content-toolbar"}}
             <div class="md-toolbar-tools">
                 <div class="logo">
-                    <strong>CD Pro</strong>
+                    <strong>{{#link-to "index"}}CD Pro{{/link-to}}</strong>
                 </div>
             </div>
         {{/paper-toolbar}}
@@ -11,7 +11,7 @@
         {{#paper-content}}
 
             {{#paper-list}}
-                {{#paper-item action="transitionTo" param="contests"}}Contests{{/paper-item}}
+                {{#paper-item action="transitionTo" param="index"}}Contests{{/paper-item}}
                 {{#paper-item action="transitionTo" param="maneuversets"}}Maneuver Sets{{/paper-item}}
                 {{#paper-item action="transitionTo" param="admin.aircrafttypes"}}Admin{{/paper-item}}
             {{/paper-list}}

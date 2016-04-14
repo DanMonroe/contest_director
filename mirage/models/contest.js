@@ -1,6 +1,8 @@
 import DS from 'ember-data';
-import { Model } from 'ember-cli-mirage';
+import { Model, belongsTo, hasMany } from 'ember-cli-mirage';
 
 export default Model.extend({
-    name: DS.attr('string')
+    name: DS.attr('string'),
+    aircrafttype: belongsTo(),
+    registrations: hasMany()
 });

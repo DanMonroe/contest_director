@@ -8,11 +8,11 @@ export default Ember.Route.extend({
             pilotclasses: this.store.findAll('pilotclass'),
             maneuversets: this.store.findAll('maneuverset'),
             maneuvers: this.store.findAll('maneuver'),
-            //registrations: this.store.findAll('registration'),
-            rounds: this.store.findAll('round')
+            registrations: this.store.findAll('registration'),
+            rounds: this.store.findAll('round'),
             //,
             //roundscores: this.store.findAll('roundscore'),
-            //users: this.store.findAll('user')
+            pilots: this.store.findAll('pilot')
 
         };
 

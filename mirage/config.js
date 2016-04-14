@@ -26,6 +26,7 @@ export default function () {
     this.get('/api/contests', (schema) => {
         return schema.contest.all();
     });
+    this.get('/api/contests/:id');
 
     this.post('/api/contests');
 
@@ -33,9 +34,18 @@ export default function () {
         return schema.aircrafttype.all();
     });
 
-    this.get('/api/pilotclasses', (schema) => {
-        return schema.pilotclass.all();
+    this.get('/api/pilotclasses', (db, request) => {
+        let pilotclasses = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            pilotclasses = db.pilotclass.all();
+        } else {
+            let filteredPilotClasses = request.queryParams['filter[aircrafttypeId]'];
+            pilotclasses = db.pilotclass.where({aircrafttypeId: filteredPilotClasses});
+        }
+
+        return pilotclasses;
     });
+    this.get('/api/pilotclasses/:id');
 
     this.get('/api/maneuversets', (schema) => {
         return schema.maneuverset.all();
@@ -62,6 +72,24 @@ export default function () {
         return schema.round.all();
     });
 
+    this.get('/api/pilots', (schema) => {
+        return schema.round.all();
+    });
+    this.get('/api/pilots/:id');
+
+
+    this.get('/api/registrations', (db, request) => {
+        let registrations = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            registrations = db.registration.all();
+        } else {
+            let contestFilter = request.queryParams['filter[contestId]'];
+            let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
+            registrations = db.registration.where({contestId: contestFilter, pilotclassId: pilotclassFilter});
+        }
+
+        return registrations;
+    });
 
 
 }
