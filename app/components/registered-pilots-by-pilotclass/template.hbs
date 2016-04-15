@@ -1,5 +1,12 @@
+<p {{action "toggleRegistrationView"}}>
+    Registration
+</p>
+{{#if showRegistrations}}
+<p>
 {{#each filteredRegistrations as |registration|}}
     <p>
         {{registration.pilot.fullName}}
     </p>
 {{/each}}
+</p>
+{{/if}}

@@ -12,4 +12,5 @@ export default Component.extend({
         return this.get("store").query('pilotclass', {filter: {aircrafttypeId: this.get("contest.aircrafttype.id")}});
     })
 
+
 });

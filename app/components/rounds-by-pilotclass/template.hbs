@@ -1,0 +1,12 @@
+<p {{action "toggleRoundView"}}>
+    Rounds
+</p>
+{{#if showRounds}}
+    <p>
+    {{#each filteredRounds as |round|}}
+        <p>
+            {{#link-to "round" contest.id pilotclass.id round.id}}{{round.name}}{{/link-to}}
+        </p>
+    {{/each}}
+    </p>
+{{/if}}

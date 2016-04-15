@@ -68,12 +68,30 @@ export default function () {
         return maneuvers;
     });
 
-    this.get('/api/rounds', (schema) => {
-        return schema.round.all();
-    });
+    this.get('/api/rounds', (db, request) => {
+        let rounds = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            rounds = db.round.all();
+        } else {
+            let contestFilter = request.queryParams['filter[contestId]'];
+            let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
+            rounds = db.round.where({contestId: contestFilter, pilotclassId: pilotclassFilter});
+        }
 
-    this.get('/api/pilots', (schema) => {
-        return schema.round.all();
+        return rounds;
+    });
+    this.get('/api/rounds/:id');
+
+    this.get('/api/pilots', (db, request) => {
+        let pilots = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            pilots = db.pilot.all();
+        } else {
+            let filteredPilots = request.queryParams['filter[pilotId]'];
+            pilots = db.pilot.where({pilotId: filteredPilots});
+        }
+
+        return pilots;
     });
     this.get('/api/pilots/:id');
 

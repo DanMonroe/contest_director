@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-let { computed, inject} = Ember;
+let { inject, computed } = Ember;
 
 export default Ember.Component.extend({
 
@@ -10,10 +10,10 @@ export default Ember.Component.extend({
 
     pilotclass: null,
 
-    showRegistrations: false,
+    showRounds: false,
 
-    filteredRegistrations: computed('contest.id', 'pilotclass.id', function () {
-        return this.get("store").query('registration', {
+    filteredRounds: computed('contest.id', 'pilotclass.id', function () {
+        return this.get("store").query('round', {
             filter: {
                 contestId: this.get("contest.id"),
                 pilotclassId: this.get("pilotclass.id")
@@ -22,8 +22,8 @@ export default Ember.Component.extend({
     }),
 
     actions: {
-        toggleRegistrationView() {
-            this.toggleProperty('showRegistrations');
+        toggleRoundView() {
+            this.toggleProperty('showRounds');
         }
     }
 

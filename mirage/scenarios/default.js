@@ -62,5 +62,6 @@ export default function(server) {
       let reg3 = server.create("registration", {"contestId": contest1.id, "pilotclassId": pilotclass4.id, "pilotId": pilot3.id});
       let reg4 = server.create("registration", {"contestId": contest1.id, "pilotclassId": pilotclass1.id, "pilotId": pilot4.id});
 
-      server.create("round", {"name": "Round 1"});
+      let round1 = server.create("round", {"name": "Round 1", "contestId": contest1.id, "pilotclassId": pilotclass4.id});
+      let round2 = server.create("round", {"name": "Round 2", "contestId": contest1.id, "pilotclassId": pilotclass4.id});
 }

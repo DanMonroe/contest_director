@@ -7,15 +7,12 @@
                 {{#paper-item class="md-3-line"}}
                     <div class="md-list-item-text">
                         <h3>{{pilotclass.name}}</h3>
-                        <p>
-                        {{#link-to "contest.registration" pilotclass.id}}Registration{{/link-to}}
-                        </p>
-                        <p>
-                            {{registered-pilots-by-pilotclass contest=contest pilotclass=pilotclass}}
-                        </p>
+                        {{registered-pilots-by-pilotclass contest=contest pilotclass=pilotclass}}
+                        {{rounds-by-pilotclass contest=contest pilotclass=pilotclass}}
                     </div>
                 {{/paper-item}}
             {{/each}}
         {{/paper-list}}
     {{/paper-card-content}}
 {{/paper-card}}
+
