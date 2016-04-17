@@ -5,7 +5,7 @@ export default DS.Model.extend({
     round: DS.belongsTo('round', { async: false }),
     maneuver: DS.belongsTo('maneuver', { async: false }),
 
-    scores: DS.hasMany('score', { async: true }),
+    scores: DS.hasMany('score', { async: false }),
 
     totalScore: DS.attr('number', {defaultValue:0})
 });

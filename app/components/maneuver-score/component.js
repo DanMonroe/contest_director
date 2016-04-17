@@ -25,8 +25,10 @@ export default Ember.Component.extend({
                 numHighToDrop = +this.get('maneuverscore.round.drophigh');
 
             let returnArray = scores.map(function (item) {
+console.log(item);
+//debugger;
                 return DisplayScore.create({
-                    content: item,
+                    points: item.get("points"),
                     droppedLow: false,
                     droppedHigh: false
 

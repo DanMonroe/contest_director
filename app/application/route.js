@@ -11,7 +11,9 @@ export default Ember.Route.extend({
             registrations: this.store.findAll('registration'),
             rounds: this.store.findAll('round'),
             maneuverscores: this.store.findAll('maneuverscore'),
-            //scores: this.store.findAll('score'),
+
+
+            scores: this.store.findAll('score'),
             //,
             //roundscores: this.store.findAll('roundscore'),
             pilots: this.store.findAll('pilot')
