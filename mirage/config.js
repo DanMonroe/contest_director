@@ -52,10 +52,6 @@ export default function () {
     });
     this.get('/api/maneuversets/:id');
 
-    //this.get('/api/maneuvers', (schema) => {
-    //    return schema.maneuver.all();
-    //});
-
     this.get('/api/maneuvers', function (db, request) {
         let maneuvers = [];
         if (Object.keys(request.queryParams).length === 0) {
@@ -67,6 +63,7 @@ export default function () {
 
         return maneuvers;
     });
+    this.get('/api/maneuvers/:id');
 
     this.get('/api/rounds', (db, request) => {
         let rounds = [];
@@ -109,6 +106,30 @@ export default function () {
         return registrations;
     });
 
+    this.get('/api/maneuverscores', (db, request) => {
+        let maneuverscores = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            maneuverscores = db.maneuverscore.all();
+        } else {
+            let registrationFilter = request.queryParams['filter[registrationId]'];
+            maneuverscores = db.maneuverscore.where({registrationId: registrationFilter});
+        }
 
+        return maneuverscores;
+    });
+    this.get('/api/maneuverscores/:id');
+
+    this.get('/api/scores', (db, request) => {
+        let scores = [];
+        //if (Object.keys(request.queryParams).length === 0) {
+            scores = db.score.all();
+        //} else {
+        //    let maneuverscoreFilter = request.queryParams['filter[maneuverscoreId]'];
+        //    scores = db.score.where({maneuverscoreId: maneuverscoreFilter});
+        //}
+
+        return scores;
+    });
+    this.get('/api/scores/:id');
 }
 
