@@ -38,7 +38,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-load-initializers": "^0.5.0",
-    "ember-paper": "https://github.com/miguelcobain/ember-paper.git#wip/v1.0.0",
+    "ember-paper": "https://github.com/miguelcobain/ember-paper.git#master",
     "ember-resolver": "^2.0.3",
     "loader.js": "^4.0.0"
   }

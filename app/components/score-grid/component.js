@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     maneuvers: null,
+    round: null,
 
     //TODO - When manever-score is a real model do this: totalScoreList: Ember.computed.mapBy('maneuvers', 'totalScore'),
     totalScoreList: Ember.computed.mapBy('maneuverscores', 'totalScore'),

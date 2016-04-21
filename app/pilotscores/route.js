@@ -2,14 +2,24 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
     model(params) {
-        //console.log(params);
+        console.log('------------------');
+        console.log(params);
 
         return Ember.RSVP.hash({
-            contest: this.store.peekRecord('contest', params.contest_id ),
-            pilotclass: this.store.peekRecord('pilotclass', params.pilotclass_id ),
-            round: this.store.peekRecord('round', params.round_id ),
-            registration: this.store.peekRecord('registration', params.registration_id ),
-            maneuverscores: this.store.findAll('maneuverscore', { registration_id: params.registration_id })
+            contest: this.store.peekRecord('contest', params.contest_id),
+            pilotclass: this.store.peekRecord('pilotclass', params.pilotclass_id),
+            round: this.store.peekRecord('round', params.round_id),
+            registration: this.store.peekRecord('registration', params.registration_id),
+            maneuverscores: this.store.queryRecord('maneuverscore',
+                {
+                    filter: {
+                        registrationId: params.registration_id
+                    }
+                }
+            ).then( (scores) => {
+                    console.log("Scores:");
+                    console.log(scores);
+            })
         });
     }
 

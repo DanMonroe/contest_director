@@ -4,6 +4,8 @@ import Judge from '../../objects/judge';
 let { computed, Component, A : emberA } = Ember;
 
 export default Component.extend({
+    round: null,
+
     judges: computed('round.numjudges', function () {
         let judgeList = emberA();
         let numJudges = this.get('round.numjudges');

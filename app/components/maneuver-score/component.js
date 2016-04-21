@@ -18,6 +18,8 @@ export default Ember.Component.extend({
 
     displayScores: Ember.computed('maneuverscore.scores.@each.points', function () {
 //debugger;
+
+console.log("displayScores");
         let scores = this.get('maneuverscore.scores');
         if (Ember.isPresent(scores)) {
 
@@ -80,7 +82,7 @@ console.log(item);
     }),
 
     moveFocus: (numManeuvers, numJudges, rowIndex, columnIndex) => {
-        debugger;
+        //debugger;
 
         rowIndex++;
 
@@ -100,10 +102,11 @@ console.log(item);
         updateScore(displayScore, rowIndex, columnIndex) {
             //debugger;
 
+            var score = displayScore.get('points');
+console.log("updating... %s %s %s score: %s", displayScore, rowIndex, columnIndex, score);
 
-            var score = displayScore.get('content');
-
-            score.save();
+            // TODO implement
+            //score.save();
 
             this.moveFocus(this.get('parentView.maneuvers.length'), this.get('parentView.judges.length'), rowIndex, columnIndex);
         }
