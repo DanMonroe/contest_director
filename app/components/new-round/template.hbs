@@ -1,0 +1,18 @@
+<h4>New Round</h4>
+{{paper-input label="Round Name" onChange=(action (mut name)) value=name required=true required-errortext="Round name is required"}}
+{{paper-input label="# Judges" type="number" max="10" min="0" onChange=(action (mut numjudges)) value=numjudges required=true required-errortext="Number of judges is required"}}
+{{paper-input label="# High Scores to Drop" type="number" min="0" onChange=(action (mut drophigh)) value=drophigh}}
+{{paper-input label="# Low Scores to Drop" type="number" min="0" onChange=(action (mut droplow)) value=droplow}}
+
+{{#paper-select disabled=disableSelect placeholder="Maneuvers" value=maneuverset onChange=(action (mut maneuverset))}}
+    {{#each maneuversets as |maneuverset|}}
+        {{#paper-option value=maneuverset.name}}
+            {{maneuverset.name}}
+        {{/paper-option}}
+    {{/each}}
+{{/paper-select}}
+
+
+{{paper-divider}}
+{{#paper-button raised=true disabled=isSaveDisabled primary=true onClick=(action "saveRound")}}Save Contest{{/paper-button}}
+{{#paper-button raised=true onClick=(action "cancel")}}Cancel{{/paper-button}}

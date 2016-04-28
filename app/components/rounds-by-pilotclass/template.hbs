@@ -1,6 +1,9 @@
-<p {{action "toggleRoundView"}}>
-    Rounds
+<p>
+    <div {{action "toggleRoundView"}}>Rounds</div>
+    <div>{{#link-to "rounds.new" contest.id pilotclass.id}}New Round{{/link-to}}</div>
+    {{paper-icon "add_circle" size="sm" onClick=(action "toggleNewRound")}}
 </p>
+
 {{#if showRounds}}
     <p>
     {{#each filteredRounds as |round|}}

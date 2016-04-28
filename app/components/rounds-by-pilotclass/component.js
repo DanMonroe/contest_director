@@ -11,6 +11,7 @@ export default Ember.Component.extend({
     pilotclass: null,
 
     showRounds: false,
+    showNewRound: false,
 
     filteredRounds: computed('contest.id', 'pilotclass.id', function () {
         return this.get("store").query('round', {
@@ -24,6 +25,12 @@ export default Ember.Component.extend({
     actions: {
         toggleRoundView() {
             this.toggleProperty('showRounds');
+        },
+
+        toggleNewRound(round) {
+            console.log("toggle new round")
+            this.toggleProperty('showNewRound');
+
         }
     }
 

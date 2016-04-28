@@ -87,6 +87,8 @@ export default function(server) {
       let pilot2 = server.create("pilot", {"firstName": "Curtis", "lastName": "Youngblood"});
       let pilot3 = server.create("pilot", {"firstName": "Craig", "lastName": "Bradley"});
       let pilot4 = server.create("pilot", {"firstName": "Leroy", "lastName": "Jenkins"});
+      let pilot5 = server.create("pilot", {"firstName": "Donald", "lastName": "Trump"});
+      let pilot6 = server.create("pilot", {"firstName": "Hillary", "lastName": "Clinton"});
 
       ///** registration **/
       let reg1 = server.create("registration", {
@@ -110,6 +112,18 @@ export default function(server) {
             "pilotId": pilot4.id
       });
 
+      let reg1Export = server.create("registration", {
+            "contestId": contest1.id,
+            "pilotclassId": pilotclass3.id,
+            "pilotId": pilot5.id
+      });
+
+      let reg2Export = server.create("registration", {
+            "contestId": contest1.id,
+            "pilotclassId": pilotclass3.id,
+            "pilotId": pilot6.id
+      });
+
       let round1 = server.create("round", {"name": "Round 1", "contestId": contest1.id, "pilotclassId": pilotclass4.id,
             maneuversetId: manSetP.id,
             numjudges:4,
@@ -118,6 +132,13 @@ export default function(server) {
       });
       let round2 = server.create("round", {"name": "Round 2", "contestId": contest1.id, "pilotclassId": pilotclass4.id,
             maneuversetId: manSetP.id,
+            numjudges:4,
+            drophigh:1,
+            droplow:1
+      });
+
+      let round1Expert = server.create("round", {"name": "Round 1", "contestId": contest1.id, "pilotclassId": pilotclass3.id,
+            maneuversetId: manSet3.id,
             numjudges:4,
             drophigh:1,
             droplow:1

@@ -47,8 +47,17 @@ export default function () {
     });
     this.get('/api/pilotclasses/:id');
 
-    this.get('/api/maneuversets', (schema) => {
-        return schema.maneuverset.all();
+    this.get('/api/maneuversets', (db, request) => {
+        let maneuversets = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            maneuversets = db.maneuverset.all();
+        } else {
+            let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
+            maneuversets = db.maneuverset.where({pilotclassId: pilotclassFilter});
+        }
+
+        return maneuversets;
+
     });
     this.get('/api/maneuversets/:id');
 
@@ -78,6 +87,7 @@ export default function () {
         return rounds;
     });
     this.get('/api/rounds/:id');
+    this.post('/api/rounds');
 
     this.get('/api/pilots', (db, request) => {
         let pilots = [];

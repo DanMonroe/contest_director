@@ -1,15 +1,17 @@
 {{#paper-card}}
     {{#paper-toolbar class="card-header"}}
         Contests
-        {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" action="addContest"}}{{paper-icon icon="add"}}{{/paper-button}}
+        {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleContest")}}{{paper-icon icon="add"}}{{/paper-button}}
     {{/paper-toolbar}}
 
 
     {{#paper-card-content}}
 
-{{#if isEditing}}
-    {{paper-input label="Contest Name" value=name required=true required-errortext="Contest name is required"}}
-    {{#paper-button raised=true primary=true action="saveContest" target=component}}Save Contest{{/paper-button}}
+{{#liquid-if isEditing class="new-contest"}}
+    {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true required-errortext="Contest name is required"}}
+    {{paper-divider}}
+    {{#paper-button raised=true primary=true onClick=(action "saveContest")}}Save Contest{{/paper-button}}
+    {{#paper-button raised=true onClick=(action "toggleContest")}}Cancel{{/paper-button}}
 {{else}}
         {{#paper-list}}
             {{#each content as |contest|}}
@@ -26,7 +28,7 @@
             {{/each}}
 
         {{/paper-list}}
-{{/if}}
+{{/liquid-if}}
 
     {{/paper-card-content}}
 {{/paper-card}}

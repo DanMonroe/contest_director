@@ -12,9 +12,7 @@ export default Ember.Component.extend({
 
     actions: {
         saveContest() {
-            console.log("saving");
             let name = this.get("name");
-            console.log(name);
 
             if(isPresent(name)) {
                 var newContest = this.get("store").createRecord('contest', {
@@ -28,7 +26,8 @@ export default Ember.Component.extend({
             }
 
         },
-        addContest() {
+
+        toggleContest() {
             this.toggleProperty("isEditing");
         }
     }
