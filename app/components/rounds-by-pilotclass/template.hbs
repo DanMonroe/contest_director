@@ -1,15 +1,23 @@
-<p>
-    <div {{action "toggleRoundView"}}>Rounds</div>
-    <div>{{#link-to "rounds.new" contest.id pilotclass.id}}New Round{{/link-to}}</div>
-    {{paper-icon "add_circle" size="sm" onClick=(action "toggleNewRound")}}
-</p>
+{{#paper-card as |card|}}
 
-{{#if showRounds}}
-    <p>
-    {{#each filteredRounds as |round|}}
-        <p>
-            {{#link-to "round" contest.id pilotclass.id round.id}}{{round.name}}{{/link-to}}
-        </p>
-    {{/each}}
-    </p>
-{{/if}}
+    {{#card.title as |title|}}
+        {{#title.text as |text|}}
+            {{#text.headline}}Rounds{{/text.headline}}
+        {{/title.text}}
+    {{/card.title}}
+
+    {{#card.content}}
+        {{#paper-list}}
+        {{#each filteredRounds as |round|}}
+            {{#paper-item class="md-3-line"}}
+                <div class="md-list-item-text">
+                {{#link-to "round" contest.id pilotclass.id round.id}}{{round.name}}{{/link-to}}
+                </div>
+            {{/paper-item}}
+        {{/each}}
+        {{/paper-list}}
+    {{/card.content}}
+    {{#card.actions}}
+        {{#paper-button onClick=(action "clickedNewRound" contest.id pilotclass.id)}}New Round{{/paper-button}}
+    {{/card.actions}}
+{{/paper-card}}

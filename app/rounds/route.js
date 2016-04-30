@@ -11,6 +11,12 @@ export default Ember.Route.extend({
                     pilotclassId: params.pilotclass_id
                 }
             }),
+            rounds: this.store.query('round', {
+                filter: {
+                    contestId: params.contest_id,
+                    pilotclassId: params.pilotclass_id
+                }
+            }),
             maneuversets: this.store.query('maneuverset', {
                 filter: {
                     pilotclassId: params.pilotclass_id

@@ -10,8 +10,8 @@ export default Ember.Component.extend({
 
     pilotclass: null,
 
-    showRounds: false,
-    showNewRound: false,
+    //showRounds: false,
+    //showNewRound: false,
 
     filteredRounds: computed('contest.id', 'pilotclass.id', function () {
         return this.get("store").query('round', {
@@ -23,14 +23,12 @@ export default Ember.Component.extend({
     }),
 
     actions: {
-        toggleRoundView() {
-            this.toggleProperty('showRounds');
-        },
-
-        toggleNewRound(round) {
-            console.log("toggle new round")
-            this.toggleProperty('showNewRound');
-
+        clickedNewRound(contest_id, pilotclass_id) {
+            let params = {
+                contest_id: contest_id,
+                pilotclass_id: pilotclass_id
+            };
+            this.get('onCreateRound')(params);
         }
     }
 

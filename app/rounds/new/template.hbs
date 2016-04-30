@@ -1,1 +1,9 @@
-{{new-round contest=model.contest pilotclass=model.pilotclass registeredpilots=model.registeredpilots maneuversets=model.maneuversets}}
+{{new-round
+    contest=model.contest
+    pilotclass=model.pilotclass
+    registeredpilots=model.registeredpilots
+    rounds=model.rounds
+    maneuversets=model.maneuversets
+    onSaveRound=(action "saveNewRound")
+    onCancelRound=(action "cancelNewRound")
+}}

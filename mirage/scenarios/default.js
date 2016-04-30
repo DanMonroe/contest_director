@@ -131,7 +131,7 @@ export default function(server) {
             droplow:1
       });
       let round2 = server.create("round", {"name": "Round 2", "contestId": contest1.id, "pilotclassId": pilotclass4.id,
-            maneuversetId: manSetP.id,
+            maneuversetId: manSetF.id,
             numjudges:4,
             drophigh:1,
             droplow:1

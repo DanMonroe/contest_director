@@ -8,7 +8,7 @@
                     <div class="md-list-item-text">
                         <h3>{{pilotclass.name}}</h3>
                         {{registered-pilots-by-pilotclass contest=contest pilotclass=pilotclass}}
-                        {{rounds-by-pilotclass contest=contest pilotclass=pilotclass}}
+                        {{rounds-by-pilotclass contest=contest pilotclass=pilotclass onCreateRound=onCreateRound}}
                     </div>
                 {{/paper-item}}
             {{/each}}
