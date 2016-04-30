@@ -128,6 +128,8 @@ export default function () {
         return maneuverscores;
     });
     this.get('/api/maneuverscores/:id');
+    this.post('/api/maneuverscores');
+
 
     this.get('/api/scores', (db, request) => {
         let scores = [];
@@ -141,5 +143,7 @@ export default function () {
         return scores;
     });
     this.get('/api/scores/:id');
+    this.post('/api/scores');
+
 }
 

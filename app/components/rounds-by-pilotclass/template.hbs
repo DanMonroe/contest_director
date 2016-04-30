@@ -9,11 +9,11 @@
     {{#card.content}}
         {{#paper-list}}
         {{#each filteredRounds as |round|}}
-            {{#paper-item class="md-3-line"}}
+
                 <div class="md-list-item-text">
                 {{#link-to "round" contest.id pilotclass.id round.id}}{{round.name}}{{/link-to}}
                 </div>
-            {{/paper-item}}
+
         {{/each}}
         {{/paper-list}}
     {{/card.content}}

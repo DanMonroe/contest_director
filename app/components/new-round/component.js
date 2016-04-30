@@ -13,7 +13,6 @@ export default Component.extend({
     drophigh: 0,
     droplow: 0,
     selectedManeuverset: null,
-    registeredpilots: null,
     rounds: null,
     name: "",
 
