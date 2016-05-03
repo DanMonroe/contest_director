@@ -27,7 +27,7 @@ console.log("displayScores");
                 numHighToDrop = +this.get('maneuverscore.round.drophigh');
 
             let returnArray = scores.map(function (item) {
-console.log(item);
+//console.log(item);
 //debugger;
                 return DisplayScore.create({
                     points: item.get("points"),
@@ -104,7 +104,7 @@ console.log(item);
 
             var score = displayScore.get('points');
 console.log("updating... %s %s %s score: %s", displayScore, rowIndex, columnIndex, score);
-
+debugger;
             // TODO implement
             //score.save();
 

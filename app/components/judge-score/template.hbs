@@ -1,1 +1,6 @@
-{{paper-input value=(mut score.points) id=(concat "score_" rowIndex "_" columnIndex) enter=(action "updateScore") onChange=(action "changeScore" score) }}
+{{paper-input
+    value=(mut score.points)
+    id=(concat "score_" rowIndex "_" columnIndex)
+    enter=(action "updateScore" score)
+    onChange=(action "changeScore" score)
+}}

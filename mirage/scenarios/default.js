@@ -124,12 +124,12 @@ export default function(server) {
             "pilotId": pilot6.id
       });
 
-      //let round1 = server.create("round", {"name": "Round 1", "contestId": contest1.id, "pilotclassId": pilotclass4.id,
-      //      maneuversetId: manSetP.id,
-      //      numjudges:4,
-      //      drophigh:1,
-      //      droplow:1
-      //});
+      let round1 = server.create("round", {"name": "Round 1", "contestId": contest1.id, "pilotclassId": pilotclass4.id,
+            maneuversetId: manSetP.id,
+            numjudges:4,
+            drophigh:1,
+            droplow:1
+      });
       //let round2 = server.create("round", {"name": "Round 2", "contestId": contest1.id, "pilotclassId": pilotclass4.id,
       //      maneuversetId: manSetF.id,
       //      numjudges:4,
@@ -144,24 +144,24 @@ export default function(server) {
       //      droplow:1
       //});
       //
-      //let manScore1 = server.create('maneuverscore',{ maneuverId: man1.id, registrationId: reg1.id, roundId: round1.id});
-      //let manScore2 = server.create('maneuverscore',{ maneuverId: man2.id, registrationId: reg1.id, roundId: round1.id});
-      //let manScore3 = server.create('maneuverscore',{ maneuverId: man3.id, registrationId: reg1.id, roundId: round1.id});
-      //
-      //server.create('score', {id: 1, points: 1, maneuverscoreId: manScore1.id});
-      //server.create('score', {id: 2, points: 3, maneuverscoreId: manScore1.id});
-      //server.create('score', {id: 3, points: 5, maneuverscoreId: manScore1.id});
-      //server.create('score', {id: 4, points: 7, maneuverscoreId: manScore1.id});
-      //
-      //server.create('score', {id: 5, points: 2, maneuverscoreId: manScore2.id});
-      //server.create('score', {id: 6, points: 4, maneuverscoreId: manScore2.id});
-      //server.create('score', {id: 7, points: 6, maneuverscoreId: manScore2.id});
-      //server.create('score', {id: 8, points: 8, maneuverscoreId: manScore2.id});
-      //
-      //server.create('score', {id: 9, points: 1, maneuverscoreId: manScore3.id});
-      //server.create('score', {id: 10, points: 1, maneuverscoreId: manScore3.id});
-      //server.create('score', {id: 11, points: 2, maneuverscoreId: manScore3.id});
-      //server.create('score', {id: 12, points: 3, maneuverscoreId: manScore3.id});
+      let manScore1 = server.create('maneuverscore',{ maneuverId: man1.id, registrationId: reg1.id, roundId: round1.id});
+      let manScore2 = server.create('maneuverscore',{ maneuverId: man2.id, registrationId: reg1.id, roundId: round1.id});
+      let manScore3 = server.create('maneuverscore',{ maneuverId: man3.id, registrationId: reg1.id, roundId: round1.id});
+
+      server.create('score', {id: 1, points: 1, maneuverscoreId: manScore1.id});
+      server.create('score', {id: 2, points: 3, maneuverscoreId: manScore1.id});
+      server.create('score', {id: 3, points: 5, maneuverscoreId: manScore1.id});
+      server.create('score', {id: 4, points: 7, maneuverscoreId: manScore1.id});
+
+      server.create('score', {id: 5, points: 2, maneuverscoreId: manScore2.id});
+      server.create('score', {id: 6, points: 4, maneuverscoreId: manScore2.id});
+      server.create('score', {id: 7, points: 6, maneuverscoreId: manScore2.id});
+      server.create('score', {id: 8, points: 8, maneuverscoreId: manScore2.id});
+
+      server.create('score', {id: 9, points: 1, maneuverscoreId: manScore3.id});
+      server.create('score', {id: 10, points: 1, maneuverscoreId: manScore3.id});
+      server.create('score', {id: 11, points: 2, maneuverscoreId: manScore3.id});
+      server.create('score', {id: 12, points: 3, maneuverscoreId: manScore3.id});
       //
       //let manScore21 = server.create('maneuverscore',{ maneuverId: man1.id, registrationId: reg2.id, roundId: round1.id});
       //let manScore22 = server.create('maneuverscore',{ maneuverId: man2.id, registrationId: reg2.id, roundId: round1.id});

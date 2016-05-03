@@ -19,7 +19,7 @@ export default Ember.Component.extend({
         changeScore(score) {
             console.log('changeScore');
 //debugger;
-console.log(this.attrs)
+console.log(this.attrs);
             this.sendAction('updateScore',
                 this.get('score'),
                 this.get('rowIndex'),
@@ -27,6 +27,7 @@ console.log(this.attrs)
             //console.log(this.get('score'));
         },
         updateScore() {
+console.log('updateScore');
             //debugger;
             this.sendAction('updateScore',
                 this.get('score'),

@@ -2,11 +2,12 @@
 <td class="manName">{{maneuverscore.maneuver.name}}</td>
 
 {{#each displayScores as |score index|}}
-    {{judge-score score=score
-    columnIndex=index
-    rowIndex=rowIndex
-    updateScore=(action 'updateScore')}}
-
+    {{judge-score
+        score=score
+        columnIndex=index
+        rowIndex=rowIndex
+        updateScore=(action 'updateScore')
+    }}
 {{/each}}
 <td class="manKFactor">{{maneuverscore.maneuver.kfactor}}</td>
 <td class="calcTotal">{{calculatedTotal}}</td>
