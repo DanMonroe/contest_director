@@ -11,6 +11,7 @@ export default function () {
     // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
     // this.namespace = '';    // make this `api`, for example, if your API is namespaced
     // this.timing = 400;      // delay for each request, automatically set to 0 during testing
+     this.timing = 0;      // delay for each request, automatically set to 0 during testing
 
     /*
      Shorthand cheatsheet:
@@ -89,7 +90,65 @@ export default function () {
     this.get('/api/rounds/:id');
     this.post('/api/rounds');
 
-    this.get('/api/pilots', (db, request) => {
+
+
+//    this.post('/api/rounds', (db, request) => {
+////debugger;
+//        let round = db.round;
+//        var params = JSON.parse(request.requestBody);
+//console.log("Mirage");
+//console.log(params);
+//
+//        let newRound = db.round.create(params);
+//
+//        let maneuvers = db.maneuver.where(
+//        {
+//            maneuversetId: params.data.relationships.maneuverset.data.id
+//        });
+//
+//        let registrations = db.registration.where(
+//        {
+//            contestId: params.data.relationships.contest.data.id,
+//            pilotclassId: params.data.relationships.pilotclass.data.id
+//        });
+//
+//
+//        registrations.forEach((registration, index, enumerable) => {
+//            console.log(registration.pilot.firstName + " " + registration.pilot.lastName);
+//
+//            maneuvers.forEach((maneuver, index, enumerable) => {
+//                console.log(maneuver.name);
+//
+//                let newManeuverscore = db.maneuverscore.create(
+//                {
+//                    maneuver: maneuver,
+//                    registration: registration,
+//                    round: newRound
+//                });
+//
+//                // create a new score for each judge
+//                for(let i = 0; i < params.data.attributes.numjudges; i++) {
+//
+//                    let newscore = db.score.create({
+//                        points: 0,
+//                        maneuverscore: newManeuverscore
+//                    });
+//
+//                    newManeuverscore.reload();
+//                }
+//
+//
+//            }); // maneuvers for each
+//
+//            registration.reload();
+//        }); // registrations for each
+//
+//        newRound.reload();
+////debugger;
+//        return newRound;
+//    });
+
+        this.get('/api/pilots', (db, request) => {
         let pilots = [];
         if (Object.keys(request.queryParams).length === 0) {
             pilots = db.pilot.all();
@@ -122,7 +181,8 @@ export default function () {
             maneuverscores = db.maneuverscore.all();
         } else {
             let registrationFilter = request.queryParams['filter[registrationId]'];
-            maneuverscores = db.maneuverscore.where({registrationId: registrationFilter});
+            let roundFilter = request.queryParams['filter[roundId]'];
+            maneuverscores = db.maneuverscore.where({registrationId: registrationFilter, roundId: roundFilter});
         }
 
         return maneuverscores;

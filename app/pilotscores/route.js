@@ -13,13 +13,11 @@ export default Ember.Route.extend({
             maneuverscores: this.store.queryRecord('maneuverscore',
                 {
                     filter: {
-                        registrationId: params.registration_id
+                        registrationId: params.registration_id,
+                        roundId: params.round_id
                     }
                 }
-            ).then( (scores) => {
-                    console.log("Scores:");
-                    console.log(scores);
-            })
+            )
         });
     }
 

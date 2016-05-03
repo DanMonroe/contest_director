@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
 let { Controller, get, inject } = Ember;
 
@@ -6,24 +7,33 @@ export default Controller.extend({
 
     store: inject.service("store"),
 
-    actions: {
-        saveNewRound(params) {
-            console.log('in saveNewRound controller');
-            console.log(params);
+    doNewRound: task(function * (params) {
+        yield this.get('createNewRound').perform(params);
+        this.transitionToRoute("contest", params.contest.id)
+    }),
 
-            let newRound = get(this, "store").createRecord('round', {
-                name: params.name,
-                numjudges: params.numjudges,
-                drophigh: params.drophigh,
-                droplow: params.droplow,
-                maneuverset: params.maneuverset,
-                contest: params.contest,
-                pilotclass: params.pilotclass
-            });
-            
-            newRound.save().then(() => {
-                console.log("new round id:" + get(newRound, "id"));
+    createNewRound: task(function * (params) {
+        let newRound = get(this, "store").createRecord('round', {
+            name: params.name,
+            numjudges: params.numjudges,
+            drophigh: params.drophigh,
+            droplow: params.droplow,
+            maneuverset: params.maneuverset,
+            contest: params.contest,
+            pilotclass: params.pilotclass
+        });
 
+        //newRound.save();
+        yield newRound.save().then(() => {
+            //console.log("new round id:" + get(newRound, "id"));
+
+            this.store.query('maneuver', {
+                filter: {
+                    maneuversetId: params.maneuverset.id
+                }
+            }).then((maneuvers) => {
+                //console.log("maneuvers");
+                //console.log(maneuvers);
                 this.store.query('registration', {
                     filter: {
                         contestId: params.contest.id,
@@ -31,53 +41,57 @@ export default Controller.extend({
                     }
                 }).then((registrations) => {
 
-                    let maneuverScoreIds = [];
-
                     registrations.forEach((registration, index, enumerable) => {
-                        console.log(registration.get('pilot.fullName'));
+                        //console.log(registration.get('pilot.fullName'));
+
+                        maneuvers.forEach((maneuver, index, enumerable) => {
+                            //console.log(maneuver.get('name'));
+
+                            let newManeuverscore = get(this, "store").createRecord('maneuverscore', {
+                                maneuver: maneuver,
+                                registration: registration,
+                                round: newRound
+                            });
+
+                            newManeuverscore.save().then(() => {
+                                //debugger;
+                                //console.log("new maneuverscore id = " + get(newManeuverscore, "id"));
 
 
-                        let newManeuverscore = get(this, "store").createRecord('maneuverscore', {
-                            maneuverId: params.maneuverset.id,
-                            registrationId: registration.get('id'),
-                            roundId: get(newRound, "id")
-                        });
+                                for(let i = 0; i < params.numjudges; i++) {
 
-                        newManeuverscore.save().then(() => {
-                            //debugger;
-                            console.log("new maneuverscore id = " + get(newManeuverscore, "id"));
-                            //maneuverScoreIds.push(get(newManeuverscore, "id"));
+                                    let newscore = get(this, "store").createRecord('score', {
+                                        points: 0,
+                                        maneuverscore: newManeuverscore
+                                    });
 
-                            //debugger;
-                            let manScoreId = get(newManeuverscore, "id");
+                                    newscore.save().then(() => {
+                                        //console.log("new score id = " + get(newscore, "id"));
 
-                            for(let i = 0; i < params.numjudges; i++) {
+                                    });
+                                }
 
-                                let newscore = get(this, "store").createRecord('score', {
-                                    points: 0,
-                                    maneuverscoreId: manScoreId
-                                });
+                            });
 
-                                newscore.save().then(() => {
-                                    console.log("new score id = " + get(newscore, "id"));
+                        }); // foreach maneuver
 
-                                });
-                            }
-
-
-
-                        });
                         //debugger;
-                    });
-//debugger;
+                    });  // for each registration
                 });
 //debugger;
-
-                //get(this, "model.registeredpilots").forEach(function (item, index, enumerable) {
-                //    console.log("here");
-                //});
-                //this.transitionToRoute("contest", params.contest.id)
             });
+        });
+
+
+//console.log("create done");
+    }).enqueue(),
+
+    actions: {
+        saveNewRound(params) {
+            console.log('in saveNewRound controller');
+            console.log(params);
+
+            this.get('doNewRound').perform(params);
 
         },
         cancelNewRound(params) {
