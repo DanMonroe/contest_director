@@ -1,21 +1,26 @@
-<table>
-    <tr>
-        <th></th>
-        {{#each judges as |judge|}}
-            <th>{{judge.name}}</th>
-        {{/each}}
-        <th>Multiplier</th>
-        <th>Total</th>
-    </tr>
 
+<table class="score-grid">
+    <tr class="score-grid-header">
+        <th class="manName">Judge:</th>
+        {{#each judges as |judge|}}
+            <th class="judgeHeader">{{judge.name}}</th>
+        {{/each}}
+        <th class="judgeHeader">Multiplier</th>
+        <th class="judgeHeader">Total</th>
+    </tr>
     {{#each maneuverscores as |maneuverscore index|}}
         {{maneuver-score maneuverscore=maneuverscore rowIndex=index}}
     {{/each}}
 
-    <tr>
-        <td>Drop Low: {{round.droplow}}</td>
-        <td>Drop High: {{round.drophigh}}</td>
-        <td colSpan="4" style="text-align: right;">Total Rounds Score:</td>
-        <td>{{totalRoundScore}}</td>
+    <tr class="score-grid-footer">
+        <td>
+            Drop Low:<span class="legend low">{{round.droplow}}</span>
+            Drop High:<span class="legend high">{{round.drophigh}}</span>
+        </td>
+        <td colSpan="5" style="text-align: right;">
+            Total Rounds Score:
+        </td>
+        <td class="calcTotal">{{totalRoundScore}}</td>
     </tr>
 </table>
+

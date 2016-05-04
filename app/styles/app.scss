@@ -11,4 +11,45 @@ $primary: "blue";
   padding: 20px 16px;
 }
 
-
+.pad5margin5 {
+  padding: 5px;
+  margin: 5px;
+}
+.maneuverscoreFooter {
+  @extend .pad5margin5;
+  text-align: center;
+}
+.manKFactor, .calcTotal{
+  @extend .pad5margin5;
+  width: 50px;
+}
+.manName {
+  @extend .pad5margin5;
+  text-align: right;
+}
+.score input {
+  @extend .manKFactor;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #333;
+}
+.droppedLow input, .legend.low {
+  @extend .pad5margin5;
+  color: #A2A2A2;
+  font-style: italic;
+  background-color: #FFF4F6;
+}
+.droppedHigh input, .legend.high {
+  @extend .pad5margin5;
+  color: #A2A2A2;
+  font-style: italic;
+  background-color: #FFF8EB;
+}
+.score-row {
+  border-top-color: rgba(0, 0, 0, 0.12);
+  margin: 3px 0;
+}
+table .score-grid {
+  border-collapse: collapse;
+  border: 5px solid red;
+}

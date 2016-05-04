@@ -11,7 +11,7 @@ export default Component.extend({
         let judgeList = emberA();
         let numJudges = this.get('round.numjudges');
         for(var i = 1; i <= numJudges; i++) {
-            judgeList.pushObject(Judge.create({name: 'Judge ' + i}));
+            judgeList.pushObject(Judge.create({name: i}));
         }
 
         return judgeList;

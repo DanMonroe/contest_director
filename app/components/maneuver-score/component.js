@@ -4,6 +4,7 @@ import DisplayScore from '../../objects/displayScore';
 export default Ember.Component.extend({
 
     tagName: 'tr',
+    classNames: ["score-row"],
 
     maneuver: null,
 
@@ -30,7 +31,8 @@ console.log("displayScores");
 //console.log(item);
 //debugger;
                 return DisplayScore.create({
-                    points: item.get("points"),
+                    content: item,
+                    //points: item.get("points"),
                     droppedLow: false,
                     droppedHigh: false
 
@@ -102,11 +104,13 @@ console.log("displayScores");
         updateScore(displayScore, rowIndex, columnIndex) {
             //debugger;
 
+            //debugger;
+            var scoreContent = displayScore.get('content');
             var score = displayScore.get('points');
-console.log("updating... %s %s %s score: %s", displayScore, rowIndex, columnIndex, score);
-debugger;
-            // TODO implement
-            //score.save();
+            console.log("updating... %s %s %s score: %s", displayScore, rowIndex, columnIndex, score);
+
+//            scoreContent.save();
+
 
             this.moveFocus(this.get('parentView.maneuvers.length'), this.get('parentView.judges.length'), rowIndex, columnIndex);
         }

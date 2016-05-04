@@ -21,18 +21,18 @@ export default Ember.Component.extend({
 //debugger;
 console.log(this.attrs);
             this.sendAction('updateScore',
-                this.get('score'),
+                score,
                 this.get('rowIndex'),
                 this.get('columnIndex'));
-            //console.log(this.get('score'));
+
         },
         updateScore() {
 console.log('updateScore');
             //debugger;
-            this.sendAction('updateScore',
-                this.get('score'),
-                this.get('rowIndex'),
-                this.get('columnIndex'));
+            //this.sendAction('updateScore',
+            //    this.get('score'),
+            //    this.get('rowIndex'),
+            //    this.get('columnIndex'));
         }
     }
 });

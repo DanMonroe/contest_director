@@ -204,6 +204,7 @@ export default function () {
     });
     this.get('/api/scores/:id');
     this.post('/api/scores');
+    this.patch('/api/scores/:id');
 
 }
 
