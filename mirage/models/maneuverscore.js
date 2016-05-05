@@ -5,5 +5,6 @@ export default Model.extend({
     registration: belongsTo(),
     round: belongsTo(),
     maneuver: belongsTo(),
-    scores: hasMany()
+    scores: hasMany(),
+    roundscore: belongsTo()
 });

@@ -7,6 +7,7 @@ export default DS.Model.extend({
 
     maneuverset: DS.belongsTo('maneuverset', { async: false }),
     maneuverscores: DS.hasMany('maneuverscore', { async: false }),
+    roundscores: DS.hasMany('roundscore', { async: false }),
     numjudges: DS.attr('number'),
     drophigh: DS.attr('number'),
     droplow: DS.attr('number')

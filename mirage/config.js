@@ -190,6 +190,21 @@ export default function () {
     this.get('/api/maneuverscores/:id');
     this.post('/api/maneuverscores');
 
+    this.get('/api/roundscores', (db, request) => {
+        let roundscores = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            roundscores = db.roundscore.all();
+        } else {
+            let registrationFilter = request.queryParams['filter[registrationId]'];
+            let roundFilter = request.queryParams['filter[roundId]'];
+            roundscores = db.roundscore.where({registrationId: registrationFilter, roundId: roundFilter});
+        }
+
+        return roundscores;
+    });
+    this.get('/api/roundscores/:id');
+    this.post('/api/roundscores');
+
 
     this.get('/api/scores', (db, request) => {
         let scores = [];

@@ -101,18 +101,18 @@ console.log("displayScores");
     },
 
     actions: {
-        updateScore(displayScore, rowIndex, columnIndex) {
+        updateScore(/*displayScore, rowIndex, columnIndex*/) {
             //debugger;
 
             //debugger;
-            var scoreContent = displayScore.get('content');
-            var score = displayScore.get('points');
-            console.log("updating... %s %s %s score: %s", displayScore, rowIndex, columnIndex, score);
+            //var scoreContent = displayScore.get('content');
+            //var score = displayScore.get('points');
+            //console.log("updating... %s %s %s score: %s", displayScore, rowIndex, columnIndex, score);
 
 //            scoreContent.save();
 
 
-            this.moveFocus(this.get('parentView.maneuvers.length'), this.get('parentView.judges.length'), rowIndex, columnIndex);
+            //this.moveFocus(this.get('parentView.maneuvers.length'), this.get('parentView.judges.length'), rowIndex, columnIndex);
         }
     }
 

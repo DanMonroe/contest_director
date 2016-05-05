@@ -12,4 +12,4 @@ export default function(){
         this.use('fade', { duration: 500 }),
         this.reverse('fade', { duration: 500 })
     );
-};
+}

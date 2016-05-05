@@ -5,7 +5,10 @@
         <h3>{{model.round.name}}</h3>
         <h3>{{model.registration.pilot.fullName}}</h3>
 
-        {{round-score round=model.round maneuverscores=model.maneuverscores}}
+        {{round-score
+            round=model.round
+            maneuverscores=model.maneuverscores
+        }}
 
     {{/paper-card-content}}
 {{/paper-card}}

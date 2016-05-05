@@ -4,5 +4,6 @@ export default Model.extend({
     contest: belongsTo(),
     pilotclass: belongsTo(),
     maneuverset: belongsTo(),
-    maneuverscores: hasMany()
+    maneuverscores: hasMany(),
+    roundscores: hasMany()
 });

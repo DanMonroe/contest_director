@@ -3,14 +3,17 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     maneuvers: null,
     round: null,
+    //roundscore: null,
 
-    //TODO - When manever-score is a real model do this: totalScoreList: Ember.computed.mapBy('maneuvers', 'totalScore'),
     totalScoreList: Ember.computed.mapBy('maneuverscores', 'totalScore'),
 
-    //totalScoreList: Ember.computed.map('maneuverscores', function(maneuverscore, index) {
-    //    debugger;
-    //    return 1;
-    //}),
+    totalRoundScoreFromManeuvers: Ember.computed.sum('totalScoreList'),
 
-    totalRoundScore: Ember.computed.sum('totalScoreList')
+//    totalScore: Ember.computed('totalRoundScoreFromManeuvers', function() {
+//console.log('in test');
+//        //debugger;
+//        let totalScore = this.get("totalRoundScoreFromManeuvers");
+//        this.set("roundscore.firstObject.totalRoundScore", totalScore);
+//        return totalScore;
+//    })
 });

@@ -9,7 +9,7 @@ export default Controller.extend({
 
     doNewRound: task(function * (params) {
         yield this.get('createNewRound').perform(params);
-        this.transitionToRoute("contest", params.contest.id)
+        this.transitionToRoute("contest", params.contest.id);
     }),
 
     createNewRound: task(function * (params) {
@@ -41,40 +41,50 @@ export default Controller.extend({
                     }
                 }).then((registrations) => {
 
-                    registrations.forEach((registration, index, enumerable) => {
+                    registrations.forEach((registration) => {
                         //console.log(registration.get('pilot.fullName'));
 
-                        maneuvers.forEach((maneuver, index, enumerable) => {
-                            //console.log(maneuver.get('name'));
+                        let newRoundscore = get(this, "store").createRecord('roundscore', {
+                            registration: registration,
+                            round: newRound,
+                            totalRoundScore: 0
+                        });
 
-                            let newManeuverscore = get(this, "store").createRecord('maneuverscore', {
-                                maneuver: maneuver,
-                                registration: registration,
-                                round: newRound
-                            });
+                        newRoundscore.save().then(() => {
 
-                            newManeuverscore.save().then(() => {
-                                //debugger;
-                                //console.log("new maneuverscore id = " + get(newManeuverscore, "id"));
+                            maneuvers.forEach((maneuver) => {
+                                //console.log(maneuver.get('name'));
+
+                                let newManeuverscore = get(this, "store").createRecord('maneuverscore', {
+                                    maneuver: maneuver,
+                                    registration: registration,
+                                    round: newRound,
+                                    roundscore: newRoundscore,
+                                    totalScore: 0
+                                });
+
+                                newManeuverscore.save().then(() => {
+                                    //debugger;
+                                    //console.log("new maneuverscore id = " + get(newManeuverscore, "id"));
 
 
-                                for(let i = 0; i < params.numjudges; i++) {
+                                    for(let i = 0; i < params.numjudges; i++) {
 
-                                    let newscore = get(this, "store").createRecord('score', {
-                                        points: 0,
-                                        maneuverscore: newManeuverscore
-                                    });
+                                        let newscore = get(this, "store").createRecord('score', {
+                                            points: 0,
+                                            maneuverscore: newManeuverscore
+                                        });
 
-                                    newscore.save().then(() => {
-                                        //console.log("new score id = " + get(newscore, "id"));
+                                        newscore.save().then(() => {
+                                            //console.log("new score id = " + get(newscore, "id"));
 
-                                    });
-                                }
+                                        });
+                                    }
 
-                            });
+                                });
 
-                        }); // foreach maneuver
-
+                            }); // foreach maneuver
+                        }); // new roundscore
                         //debugger;
                     });  // for each registration
                 });
@@ -95,7 +105,7 @@ export default Controller.extend({
 
         },
         cancelNewRound(params) {
-            this.transitionToRoute("contest", params.contest_id)
+            this.transitionToRoute("contest", params.contest_id);
         }
     }
 });
