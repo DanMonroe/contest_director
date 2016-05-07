@@ -16,8 +16,10 @@ Router.map(function () {
     });
 
     this.route('rounds', {path: '/contest/:contest_id/pilotclass/:pilotclass_id/rounds'}, function () {
-        this.route('new', {path: '/new'}, function () {
-        });
+      this.route('new', {path: '/new'}, function () {
+      });
+      this.route('results', {path: '/:round_id/results'}, function () {
+      });
     });
 
     this.route('round', {path: '/contest/:contest_id/pilotclass/:pilotclass_id/round/:round_id'}, function () {

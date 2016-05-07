@@ -197,13 +197,18 @@ export default function () {
         } else {
             let registrationFilter = request.queryParams['filter[registrationId]'];
             let roundFilter = request.queryParams['filter[roundId]'];
-            roundscores = db.roundscore.where({registrationId: registrationFilter, roundId: roundFilter});
+            if(registrationFilter) {
+                roundscores = db.roundscore.where({registrationId: registrationFilter, roundId: roundFilter});
+            } else {
+                roundscores = db.roundscore.where({roundId: roundFilter});
+            }
         }
 
         return roundscores;
     });
     this.get('/api/roundscores/:id');
     this.post('/api/roundscores');
+    this.patch('/api/roundscores/:id');
 
 
     this.get('/api/scores', (db, request) => {

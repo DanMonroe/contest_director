@@ -12,6 +12,7 @@
 
                 <div class="md-list-item-text">
                 {{#link-to "round" contest.id pilotclass.id round.id}}{{round.name}}{{/link-to}}
+                - {{#link-to "rounds.results" contest.id pilotclass.id round.id}}Results{{/link-to}}
                 </div>
 
         {{/each}}

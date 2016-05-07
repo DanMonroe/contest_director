@@ -6,6 +6,7 @@ let { computed, Component, A : emberA } = Ember;
 export default Component.extend({
     round: null,
     maneuverscores:null,
+    roundscore: null,
 
     judges: computed('round.numjudges', function () {
         let judgeList = emberA();

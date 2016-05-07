@@ -7,6 +7,14 @@ export default Ember.Route.extend({
             pilotclass: this.store.peekRecord('pilotclass', params.pilotclass_id),
             round: this.store.peekRecord('round', params.round_id),
             registration: this.store.peekRecord('registration', params.registration_id),
+            roundscore: this.store.queryRecord('roundscore',
+                {
+                    filter: {
+                        registrationId: params.registration_id,
+                        roundId: params.round_id
+                    }
+                }
+            ),
             maneuverscores: this.store.query('maneuverscore',
                 {
                     filter: {

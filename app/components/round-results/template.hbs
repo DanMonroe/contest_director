@@ -1,0 +1,23 @@
+{{log roundscores}}
+
+{{#paper-list}}
+    {{#paper-item}}
+        <div flex-grow layout="row">
+            <h4 flex="50">Pilot</h4>
+            <h4 flex="25">Raw</h4>
+            <h4 flex="25">Normalized</h4>
+        </div>
+        {{paper-divider}}
+    {{/paper-item}}
+{{#each sortedScores as |roundscore|}}
+    {{#paper-item}}
+        <div flex-grow layout="row">
+        <span flex="50">{{roundscore.registration.pilot.fullName}}</span>
+        <span flex="25">{{roundscore.totalRoundScore}}</span>
+        <span flex="25">{{roundscore.normalizedScore}}</span>
+        </div>
+        {{paper-divider}}
+    {{/paper-item}}
+{{/each}}
+{{/paper-list}}
+High score: {{highScore}}
