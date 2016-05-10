@@ -159,7 +159,7 @@ export default function () {
     //
     //    return pilots;
     //});
-    this.get('/api/pilots/:id');
+    //this.get('/api/pilots/:id');
 
 
     this.get('/api/registrations', (db, request) => {
