@@ -1,0 +1,23 @@
+{{#paper-card}}
+    {{#paper-toolbar class="card-header"}}
+        Aircraft Types
+    {{/paper-toolbar}}
+
+
+    {{#paper-card-content}}
+
+        {{#paper-list}}
+            {{#each model as |aircrafttype|}}
+                {{#paper-item}}
+                    <div class="md-list-item-text">
+                        <h5>{{aircrafttype.name}}</h5>
+                    </div>
+                {{/paper-item}}
+                {{paper-divider}} {{! OR {{paper-divider inset=true}}
+
+            {{/each}}
+
+        {{/paper-list}}
+
+    {{/paper-card-content}}
+{{/paper-card}}

@@ -15,19 +15,12 @@ export default Ember.Route.extend({
 
 
             scores: this.store.findAll('score'),
-            //,
-            //roundscores: this.store.findAll('roundscore'),
+
             pilots: this.store.findAll('pilot')
 
         };
 
         return Ember.RSVP.hash(request);
-    },
-
-    actions: {
-        transitionTo(route) {
-            this.transitionTo(route);
-        }
     }
 
 });

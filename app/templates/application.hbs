@@ -11,9 +11,11 @@
         {{#paper-content}}
 
             {{#paper-list}}
-                {{#paper-item action="transitionTo" param="index"}}Contests{{/paper-item}}
-                {{#paper-item action="transitionTo" param="maneuversets"}}Maneuver Sets{{/paper-item}}
-                {{#paper-item action="transitionTo" param="admin.aircrafttypes"}}Admin{{/paper-item}}
+                {{#paper-item onClick=(transition-to "index")}}Contests{{/paper-item}}
+                {{#paper-item onClick=(transition-to "pilots")}}Pilots{{/paper-item}}
+                {{#paper-item onClick=(transition-to "maneuversets")}}Maneuver Sets{{/paper-item}}
+                {{#paper-item onClick=(transition-to "aircrafttypes")}}Aircraft Types{{/paper-item}}
+                {{#paper-item onClick=(transition-to "admin.aircrafttypes")}}Admin{{/paper-item}}
             {{/paper-list}}
 
         {{/paper-content}}
