@@ -1,10 +1,31 @@
 $primary: "blue";
 @import 'ember-paper';
 
+$titleHeight: 60px;
+
+.move-up {
+  position: relative;
+  top: $titleHeight * -1;
+  z-index: 99;
+}
+
+.titleHeight {
+  height: $titleHeight;
+  font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
 .md-button-header-right.md-fab.md-warn.ember-view.paper-button.md-default-theme.md-button {
   position: absolute;
   right: 15px;
-  bottom: -32px;
+  bottom: -39px;
 }
 
 .card-header {

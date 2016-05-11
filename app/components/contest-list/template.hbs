@@ -1,18 +1,28 @@
-{{#paper-card}}
-    {{#paper-toolbar class="card-header"}}
+<md-list-item class="md-1-line titleHeight">
+    <div class="md-no-style md-list-item-inner">
         Contests
-        {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleContest")}}{{paper-icon icon="add"}}{{/paper-button}}
-    {{/paper-toolbar}}
+        {{#unless isEditing}}
+            {{#paper-button icon-button=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleContest")}}{{paper-icon icon="add"}}{{/paper-button}}
+        {{/unless}}
+    </div>
+</md-list-item>
 
-
-    {{#paper-card-content}}
+{{paper-divider}}
 
 {{#liquid-if isEditing class="new-contest"}}
-    {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true required-errortext="Contest name is required"}}
-    {{paper-divider}}
-    {{#paper-button raised=true primary=true onClick=(action "saveContest")}}Save Contest{{/paper-button}}
-    {{#paper-button raised=true onClick=(action "toggleContest")}}Cancel{{/paper-button}}
+
+    <div class="md-padding">
+        {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true required-errortext="Contest name is required"}}
+
+        <div class="layout-row layout-align-end-center">
+
+            {{#paper-button raised=true primary=true onClick=(action "saveContest")}}Save Contest{{/paper-button}}
+            {{#paper-button raised=true onClick=(action "toggleContest")}}Cancel{{/paper-button}}
+        </div>
+    </div>
+
 {{else}}
+
         {{#paper-list}}
             {{#each content as |contest|}}
                 {{#paper-item}}
@@ -24,11 +34,8 @@
                     </div>
                 {{/paper-item}}
                 {{paper-divider}} {{! OR {{paper-divider inset=true}}
-
             {{/each}}
-
         {{/paper-list}}
+
 {{/liquid-if}}
 
-    {{/paper-card-content}}
-{{/paper-card}}

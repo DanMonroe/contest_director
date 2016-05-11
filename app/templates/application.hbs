@@ -1,38 +1,26 @@
-{{#paper-nav-container class="site-nav-container"}}
-    {{#paper-sidenav class="md-sidenav-left md-whiteframe-z2 site-sidenav" locked-open="gt-sm"}}
-        {{#paper-toolbar class="site-content-toolbar"}}
+
+<div layout="column">
+    <md-toolbar flex="20" class="md-tall">
+        <md-toolbar>
             <div class="md-toolbar-tools">
-                <div class="logo">
-                    <strong>{{#link-to "index"}}CD Pro{{/link-to}}</strong>
-                </div>
+                {{#paper-button target=toggle action="toggleMenu" icon-button=true}}{{paper-icon icon="menu"}}{{/paper-button}}
+
+                <span flex></span>
+
             </div>
-        {{/paper-toolbar}}
+        </md-toolbar>
+    </md-toolbar>
 
-        {{#paper-content}}
 
-            {{#paper-list}}
-                {{#paper-item onClick=(transition-to "index")}}Contests{{/paper-item}}
-                {{#paper-item onClick=(transition-to "pilots")}}Pilots{{/paper-item}}
-                {{#paper-item onClick=(transition-to "maneuversets")}}Maneuver Sets{{/paper-item}}
-                {{#paper-item onClick=(transition-to "aircrafttypes")}}Aircraft Types{{/paper-item}}
-                {{#paper-item onClick=(transition-to "admin.aircrafttypes")}}Admin{{/paper-item}}
-            {{/paper-list}}
 
-        {{/paper-content}}
-    {{/paper-sidenav}}
 
-    <div layout="column" tabindex="-1" role="main" flex>
-        {{#paper-toolbar}}
-            <div class="md-toolbar-tools">
-                {{#paper-sidenav-toggle as |toggle|}}
-                    {{#paper-button target=toggle action="toggleMenu" icon-button=true}}{{paper-icon icon="menu"}}{{/paper-button}}
-                {{/paper-sidenav-toggle}}
-            </div>
-        {{/paper-toolbar}}
-        {{#paper-content flex=true scroll-y=true layout-padding=true}}
+
+        <div layout-align="center start" layout="row">
+        <md-content class="md-whiteframe-z3 move-up" flex="80">
+
+
 
             {{liquid-outlet}}
-
-        {{/paper-content}}
+        </md-content>
     </div>
-{{/paper-nav-container}}
+</div>
