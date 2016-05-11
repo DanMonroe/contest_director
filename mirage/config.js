@@ -24,9 +24,9 @@ export default function () {
      */
 
 
-    this.get('/api/contests', (schema) => {
-        return schema.contest.all();
-    });
+    //this.get('/api/contests', (schema) => {
+    //    return schema.contest.all();
+    //});
     this.get('/api/contests/:id');
 
     this.post('/api/contests');
@@ -236,6 +236,7 @@ export default function () {
     //this.namespace = 'api';
     this.passthrough('/api/aircrafttypes');
     this.passthrough('/api/pilots');
+    this.passthrough('/api/contests');
 
 }
 
