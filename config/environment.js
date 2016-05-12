@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'cdpro-3',
+    modulePrefix: 'contest-director',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -42,7 +42,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiHost = 'http://localhost:4000';
+    ENV.apiHost = 'https://salty-plateau-29103.herokuapp.com';
   }
 
   return ENV;

@@ -1,7 +1,7 @@
 {
-  "name": "cdpro-3",
+  "name": "contest-director",
   "version": "0.0.0",
-  "description": "Small description for cdpro-3 goes here",
+  "description": "Small description for contest director goes here",
   "private": true,
   "directories": {
     "doc": "doc",

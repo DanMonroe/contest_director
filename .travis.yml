@@ -1,23 +1,24 @@
----
 language: node_js
 node_js:
-  - "0.12"
-
+- '0.12'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
-
+- export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
+- npm config set spin false
+- npm install -g npm@^2
 install:
-  - npm install -g bower
-  - npm install
-  - bower install
-
+- npm install -g bower
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: BHN0Lj6Xt/IVnT6r86lpCAVk30lu1lPC0h7HbAkZ0yS0HNG5BXiM9wGNS1gVOOLC/affexsQye6IYpNHZieDUxKq1/QMtIgWJQcp2wUYsAULFGkgrUb1TBP6OP1Kyq44zzCJeW8/FwbiuBFOEumUUp+8IypgC+4zvw2yZTTrU6wiEvI7Tyw2QH6BQJmp4U4YsvTF5/a+ti+OlJ82Dkv6+tFfahpieehjkc8zptJQnW0Dy62MEEsEgQOUob3yB4q587s60bD2K+aHrB+swf1Agq1QjZb7Tf776rIeJrXZ/WouPwZ6SGtXcqUm2q4guLhrNfuI8RLB/Ig0hdUTe8s8+kV9J4svRwxZQcxlnh53mTLm2TCLPU9Y3hP9BTDSUZEye1Aj/vFJ4rYJ4xDAwvaChtu5To+qDZG4tGscaVTIEIq7Bfn6RnMM62Hkn0e7EX6L7ofH/Uo4BLsZXerzcwaZaZcTjYMXbiW/vbm3QCsI+41eezgVzvnmXTg+dX+Mr01DRf0G+XWkZjzL8q6ZcnZo0sH37Bwy88HL8ov7kE8jL1nS3Ca49la2ZlZn0eDvk6CBC0QAi7Tgm0dbtHty0Z7k2JrTg+OkiLhJ/c/U7PHAL770YY+jOUTBFqNQlwYEia+AV6m60Me1oJHOPirqHrJoMvXaTzKX4hy0rS8dgreDiTs=
+  app: contest-director
+  on:
+    repo: DanMonroe/contest_director
