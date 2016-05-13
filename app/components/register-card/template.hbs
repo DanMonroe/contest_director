@@ -1,0 +1,22 @@
+{{#paper-dialog fullscreen=fullscreen clickOutsideToClose=true onClose=(action "cancelRegister" "cancel")}}
+
+    {{#paper-dialog-content}}
+        <h2 class="md-title">Register with Contest Director</h2>
+        <div class="row">
+            {{paper-input autofocus=true typ="email" label="User Email" required=true value=email onChange=(action (mut email))}}
+        </div>
+        <div class="row">
+            {{paper-input type="password" label="Password" required=true  value=password onChange=(action (mut password))}}
+        </div>
+        <div class="row">
+            {{paper-input type="password" label="Confirm Password" required=true value=confirmPassword onChange=(action (mut confirmPassword))}}
+        </div>
+    {{/paper-dialog-content}}
+
+
+    {{#paper-dialog-actions class="layout-row"}}
+        <span flex></span>
+        {{#paper-button primary=true onClick=(action "cancelRegister" "cancel")}}Cancel{{/paper-button}}
+        {{#paper-button primary=true disabled=disabledRegister onClick=(action "doRegister" "ok")}}Login{{/paper-button}}
+    {{/paper-dialog-actions}}
+{{/paper-dialog}}

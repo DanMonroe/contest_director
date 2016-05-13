@@ -35,6 +35,11 @@ Router.map(function () {
 
   this.route('pilots');
   this.route('aircrafttypes');
+
+  this.route('auth', function() {
+    this.route('login');
+    this.route('register');
+  });
 });
 
 export default Router;

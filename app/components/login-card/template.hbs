@@ -1,0 +1,19 @@
+{{#paper-dialog fullscreen=fullscreen clickOutsideToClose=true onClose=(action "cancelLogin" "cancel")}}
+
+    {{#paper-dialog-content}}
+        <h2 class="md-title">Login to Contest Director</h2>
+        <div class="row">
+            {{paper-input autofocus=true typ="text" label="Username" required=true value=userName onChange=(action (mut userName))}}
+        </div>
+        <div class="row">
+            {{paper-input type="password" label="Password" required=true value=password onChange=(action (mut password))}}
+        </div>
+    {{/paper-dialog-content}}
+
+
+    {{#paper-dialog-actions class="layout-row"}}
+        <span flex></span>
+        {{#paper-button primary=true onClick=(action "cancelLogin" "cancel")}}Cancel{{/paper-button}}
+        {{#paper-button primary=true disabled=disabledLogin onClick=(action "doLogin" "ok")}}Login{{/paper-button}}
+    {{/paper-dialog-actions}}
+{{/paper-dialog}}

@@ -24,16 +24,20 @@ export default function () {
      */
 
 
-    //this.get('/api/contests', (schema) => {
-    //    return schema.contest.all();
-    //});
+
+    this.get('/api/contests', (schema) => {
+        return schema.contest.all();
+    });
+    this.get('/api/aircrafttypes', (schema) => {
+        return schema.aircrafttype.all();
+    });
+
+
+
     this.get('/api/contests/:id');
 
     this.post('/api/contests');
 
-    //this.get('/api/aircrafttypes', (schema) => {
-    //    return schema.aircrafttype.all();
-    //});
 
     this.get('/api/pilotclasses', (db, request) => {
         let pilotclasses = [];
@@ -148,18 +152,18 @@ export default function () {
 //        return newRound;
 //    });
 
-    //this.get('/api/pilots', (db, request) => {
-    //    let pilots = [];
-    //    if (Object.keys(request.queryParams).length === 0) {
-    //        pilots = db.pilot.all();
-    //    } else {
-    //        let filteredPilots = request.queryParams['filter[pilotId]'];
-    //        pilots = db.pilot.where({pilotId: filteredPilots});
-    //    }
-    //
-    //    return pilots;
-    //});
-    //this.get('/api/pilots/:id');
+    this.get('/api/pilots', (db, request) => {
+        let pilots = [];
+        if (Object.keys(request.queryParams).length === 0) {
+            pilots = db.pilot.all();
+        } else {
+            let filteredPilots = request.queryParams['filter[pilotId]'];
+            pilots = db.pilot.where({pilotId: filteredPilots});
+        }
+
+        return pilots;
+    });
+    this.get('/api/pilots/:id');
 
 
     this.get('/api/registrations', (db, request) => {
@@ -226,17 +230,11 @@ export default function () {
     this.post('/api/scores');
     this.patch('/api/scores/:id');
 
-    //
-    // this.urlPrefix = 'http://localhost:4000';    // make this `http://localhost:8080`, for example, if your API is on a different server
-    // //this.namespace = 'api';    // make this `api`, for example, if your API is namespaced
-    //
-    //this.passthrough('/api/pilots');
-    //this.passthrough('/pilots');
 
     //this.namespace = 'api';
-    this.passthrough('/api/aircrafttypes');
-    this.passthrough('/api/pilots');
-    this.passthrough('/api/contests');
+    //this.passthrough('/api/aircrafttypes');
+    //this.passthrough('/api/pilots');
+    //this.passthrough('/api/contests');
 
 }
 

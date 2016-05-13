@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Route.extend({
     beforeModel: function () {
         var request = {
-            contests: this.store.findAll('contest'),
-            aircrafttypes: this.store.findAll('aircrafttype'),
+            //contests: this.store.findAll('contest'),
+            //aircrafttypes: this.store.findAll('aircrafttype'),
 
             //pilotclasses: this.store.findAll('pilotclass'),
             //maneuversets: this.store.findAll('maneuverset'),
@@ -17,11 +17,11 @@ export default Ember.Route.extend({
 
             //scores: this.store.findAll('score'),
 
-            pilots: this.store.findAll('pilot')
+            //pilots: this.store.findAll('pilot')
 
         };
 
         return Ember.RSVP.hash(request);
-    }
 
+    }
 });
