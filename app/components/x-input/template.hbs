@@ -1,0 +1,14 @@
+<input
+    id={{inputElementId}}
+    value={{value}}
+    type={{type}}
+    class="md-input {{if value
+        (concat
+            "validate "
+            (if errors.length "invalid" "valid")
+        )
+    }}"
+    onkeyup={{action (mut value) value='target.value'}}
+    onchange={{action (mut value) value='target.value'}} />
+
+<label for={{inputElementId}} data-error={{_errorMessages}}>{{label}}{{yield}}</label>

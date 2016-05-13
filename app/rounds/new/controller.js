@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import { task } from 'ember-concurrency';
 
-let { Controller, get, inject } = Ember;
+const { Controller, get, inject } = Ember;
 
 export default Controller.extend({
 

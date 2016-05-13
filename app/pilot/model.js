@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-let { computed } = Ember;
+const { computed } = Ember;
 
 export default DS.Model.extend({
     firstName: DS.attr('string'),

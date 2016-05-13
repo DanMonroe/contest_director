@@ -13,9 +13,6 @@
         </md-toolbar>
     </md-toolbar>
 
-
-
-
 {{#unless hideContent}}
     <div layout-align="center start" layout="row">
         <md-content class="md-whiteframe-z3 move-up" flex="80">
@@ -28,8 +25,8 @@
 </div>
 
 {{#if showLogin}}
-    {{login-card close=(action 'closeLogin')}}
+    {{login-card model=userModel onsubmit=(action 'doLogin') oncancel=(action 'closeLogin')}}
 {{/if}}
 {{#if showRegistration}}
-    {{register-card close=(action 'closeRegister')}}
+    {{register-card model=userModel onsubmit=(action 'doRegister') oncancel=(action 'closeRegister')}}
 {{/if}}

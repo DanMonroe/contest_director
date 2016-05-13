@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Judge from '../../objects/judge';
 
-let { computed, Component, A : emberA } = Ember;
+const { computed, Component, A : emberA } = Ember;
 
 export default Component.extend({
     round: null,

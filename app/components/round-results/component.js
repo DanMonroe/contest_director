@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-let { Component, computed, get, isPresent } = Ember;
+const { Component, computed, get, isPresent } = Ember;
 
 export default Component.extend({
     roundscores: null,

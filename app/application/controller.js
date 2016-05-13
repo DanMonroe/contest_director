@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-let { computed } = Ember;
+const { computed } = Ember;
 
 export default Ember.Controller.extend({
 
@@ -8,35 +8,50 @@ export default Ember.Controller.extend({
     showRegistration: false,
     hideContent: computed.or("showLogin", "showRegistration"),
 
+    userModel: null,
+
+    resetLogin() {
+        this.set("userModel", null);
+        this.set('showLogin', false);
+    },
+
+    resetRegistration() {
+        this.set("userModel", null);
+        this.set('showRegistration', false);
+    },
+
     actions: {
         clickLogin() {
+            this.set("userModel", this.store.createRecord('user'));
             this.toggleProperty("showLogin");
         },
 
         clickRegistration() {
+            this.set("userModel", {
+                email: '',
+                password: ''
+            });
             this.toggleProperty("showRegistration");
         },
 
-        //openLogin(/* param, event */) {
-        //    this.set('showLogin', true);
-        //},
+        doLogin(user) {
+            console.log("login attempted - ");
+            //console.log("login attempted - " + user.userName);
+            this.resetLogin();
+        },
+
+        doRegister(user) {
+            console.log("Registration complete - ");
+            //console.log("Registration complete - " + user.userName);
+            this.resetRegistration();
+        },
 
         closeLogin() {
-            //if (result === 'ok') {
-            //    result = `${result} and dog named ${dogName}`;
-            //}
-            //this.set('result', result);
-//debugger;
-            this.set('showLogin', false);
+            this.resetLogin();
         },
 
         closeRegister() {
-            //if (result === 'ok') {
-            //    result = `${result} and dog named ${dogName}`;
-            //}
-            //this.set('result', result);
-//debugger;
-            this.set('showRegistration', false);
+            this.resetRegistration();
         }
 
 

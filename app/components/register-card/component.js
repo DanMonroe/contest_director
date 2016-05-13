@@ -1,16 +1,18 @@
 import Ember from 'ember';
 
-let { computed, get, set, isEmpty } = Ember;
+const { computed, get, set, isEmpty } = Ember;
 
 export default Ember.Component.extend({
 
-    disabledRegister: computed("userName", "password", "confirmPassword", function() {
-        return isEmpty(get(this, "userName")) || isEmpty(get(this, "password")) || isEmpty(get(this, "confirmPassword"));
+    model: null,
+
+    disabledRegister: computed("userModel.email", "userModel.password", "userModel.confirmPassword", function() {
+        return isEmpty(get(this, "userModel.email")) || isEmpty(get(this, "userModel.password")) || isEmpty(get(this, "userModel.confirmPassword"));
     }),
 
     actions: {
         doRegister() {
-            get(this, "close")();
+            get(this, "onsubmit")(get(this, "model"));
         },
 
         cancelRegister() {
