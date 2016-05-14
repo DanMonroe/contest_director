@@ -9,7 +9,6 @@ export default Component.extend({
     classNames: ['input-field', 'md-default-theme'],
 
     classNameBindings: ['hasValue:md-input-has-value'],
-    //classNameBindings: ['isInvalid:md-input-invalid', 'hasValue:md-input-has-value'],
 
     hasValue: computed("value", function() {
         if( isPresent(get(this,"value")) && get(this, "value.length") > 0 ) {

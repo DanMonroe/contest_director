@@ -42,7 +42,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiHost = 'https://salty-plateau-29103.herokuapp.com';
+    ENV.apiHost = 'https://shielded-peak-76475.herokuapp.com';
   }
 
   return ENV;
