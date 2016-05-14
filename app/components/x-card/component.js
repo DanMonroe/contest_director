@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { Component, computed, get } = Ember;
+const { Component, get } = Ember;
 
 export default Component.extend({
     classNames: ['card'],

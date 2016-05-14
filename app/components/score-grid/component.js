@@ -31,7 +31,7 @@ export default Component.extend({
     }),
 
     updateNormalizedScores() {
-        let allRoundScores;
+        //let allRoundScores;
         let roundId = get(this, 'round.id');
         get(this, 'store')
             .query('roundscore', {filter: {roundId: roundId}})
