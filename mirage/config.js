@@ -232,6 +232,8 @@ export default function () {
 
 
     //this.namespace = 'api';
+    this.passthrough('/api/register');
+    this.passthrough('/api/login');
     //this.passthrough('/api/aircrafttypes');
     //this.passthrough('/api/pilots');
     //this.passthrough('/api/contests');

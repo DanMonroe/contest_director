@@ -5,14 +5,14 @@ const { Component, computed, get } = Ember;
 export default Component.extend({
     classNames: ['card'],
 
+    model: null,
+
     actions: {
         onsubmit(user) {
-            //debugger;
             get(this, "onsubmit")(user);
         },
 
         oncancel() {
-            //debugger;
             get(this, "oncancel")();
         }
     }

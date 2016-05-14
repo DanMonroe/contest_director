@@ -10,6 +10,14 @@ export default Ember.Controller.extend({
 
     userModel: null,
 
+    openLogin() {
+        this.set("userModel", {
+            email: '',
+            password: ''
+        });
+        this.toggleProperty("showLogin");
+    },
+
     resetLogin() {
         this.set("userModel", null);
         this.set('showLogin', false);
@@ -22,29 +30,28 @@ export default Ember.Controller.extend({
 
     actions: {
         clickLogin() {
-            this.set("userModel", this.store.createRecord('user'));
-            this.toggleProperty("showLogin");
+            this.openLogin();
         },
 
         clickRegistration() {
-            this.set("userModel", {
-                email: '',
-                password: '',
-                passwordConfirmation: ''
-            });
+            this.set("userModel", this.store.createRecord('user'));
             this.toggleProperty("showRegistration");
         },
 
         doLogin(user) {
-            console.log("login attempted - ");
-            //console.log("login attempted - " + user.userName);
+            //debugger;
+            //console.log("login attempted - ");
+            console.log("login attempted - " + user.get('model.email'));
             this.resetLogin();
         },
 
         doRegister(user) {
-            console.log("Registration complete - ");
-            //console.log("Registration complete - " + user.userName);
-            this.resetRegistration();
+            user.get('model').save()
+                .then(() => {
+                    this.set('showRegistration', false);
+                    this.openLogin();
+                    //this.transitionTo('auth.login');
+                });
         },
 
         closeLogin() {
