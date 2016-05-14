@@ -29,7 +29,8 @@ export default Ember.Controller.extend({
         clickRegistration() {
             this.set("userModel", {
                 email: '',
-                password: ''
+                password: '',
+                passwordConfirmation: ''
             });
             this.toggleProperty("showRegistration");
         },

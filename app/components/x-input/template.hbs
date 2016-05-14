@@ -11,4 +11,13 @@
     onkeyup={{action (mut value) value='target.value'}}
     onchange={{action (mut value) value='target.value'}} />
 
-<label for={{inputElementId}} data-error={{_errorMessages}}>{{label}}{{yield}}</label>
+<label for={{inputElementId}}>{{label}}{{yield}}</label>
+{{#if isInvalid}}
+    <div class="md-input-messages-animation md-auto-hide" ng-messages>
+        {{#each errors as |error|}}
+            <div id="error-{{inputElementId}}-{{index}}" class="paper-input-error ng-enter ng-enter-active" ng-message>
+                {{error}}
+            </div>
+        {{/each}}
+    </div>
+{{/if}}

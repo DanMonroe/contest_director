@@ -25,10 +25,6 @@ export default Component.extend(Validations, {
     }),
 
     actions: {
-        openPromptDialog(/* param, event */) {
-            set(this, 'showLogin', true);
-        },
-
         doLogin() {
             debugger;
             get(this, "onsubmit")(get(this, "model"));

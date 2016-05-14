@@ -1,8 +1,17 @@
 import Ember from 'ember';
+import { email, password, passwordConfirmation } from '../../utils/user-validations';
+import { buildValidations } from 'ember-cp-validations';
 
-const { computed, get, set, isEmpty } = Ember;
+const { Component, computed, get, set, isEmpty } = Ember;
 
-export default Ember.Component.extend({
+const Validations = buildValidations({
+    'model.email': email,
+    'model.password': password,
+    'model.passwordConfirmation': passwordConfirmation
+});
+
+
+export default Component.extend(Validations, {
 
     model: null,
 
