@@ -1,9 +1,11 @@
-import DS from 'ember-data';
+import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 import config from '../config/environment';
 
-export default DS.JSONAPIAdapter.extend({
-    host: config.apiHost,
-    namespace: "api",
+export default JSONAPIAdapter.extend(DataAdapterMixin, {
+    host: config.DS.host,
+    namespace: config.DS.namespace,
+    authorizer: 'authorizer:oauth2',
 
     urlForCreateRecord(modelName/*, snapshot*/) {
         switch(modelName) {

@@ -13,7 +13,6 @@
         </md-toolbar>
     </md-toolbar>
 
-{{#unless hideContent}}
     <div layout-align="center start" layout="row">
         <md-content class="md-whiteframe-z3 move-up" flex="80">
 
@@ -21,12 +20,5 @@
 
         </md-content>
     </div>
-{{/unless}}
 </div>
 
-{{#if showLogin}}
-    {{login-card model=userModel onsubmit=(action 'doLogin') oncancel=(action 'closeLogin')}}
-{{/if}}
-{{#if showRegistration}}
-    {{register-card model=userModel onsubmit=(action 'doRegister') oncancel=(action 'closeRegister')}}
-{{/if}}

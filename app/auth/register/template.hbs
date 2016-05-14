@@ -1,1 +1,5 @@
-{{outlet}}
+{{register-card
+    model=model
+    onsubmit=(route-action 'doRegister')
+    oncancel=(route-action 'closeRegister')
+}}

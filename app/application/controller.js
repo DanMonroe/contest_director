@@ -1,67 +1,17 @@
 import Ember from 'ember';
 
-const { computed } = Ember;
+const { Controller } = Ember;
 
-export default Ember.Controller.extend({
-
-    showLogin: false,
-    showRegistration: false,
-    hideContent: computed.or("showLogin", "showRegistration"),
-
-    userModel: null,
-
-    openLogin() {
-        this.set("userModel", {
-            email: '',
-            password: ''
-        });
-        this.toggleProperty("showLogin");
-    },
-
-    resetLogin() {
-        this.set("userModel", null);
-        this.set('showLogin', false);
-    },
-
-    resetRegistration() {
-        this.set("userModel", null);
-        this.set('showRegistration', false);
-    },
+export default Controller.extend({
 
     actions: {
         clickLogin() {
-            this.openLogin();
+            this.transitionToRoute('auth.login');
         },
 
         clickRegistration() {
-            this.set("userModel", this.store.createRecord('user'));
-            this.toggleProperty("showRegistration");
-        },
-
-        doLogin(user) {
-            //debugger;
-            //console.log("login attempted - ");
-            console.log("login attempted - " + user.get('model.email'));
-            this.resetLogin();
-        },
-
-        doRegister(user) {
-            user.get('model').save()
-                .then(() => {
-                    this.set('showRegistration', false);
-                    this.openLogin();
-                    //this.transitionTo('auth.login');
-                });
-        },
-
-        closeLogin() {
-            this.resetLogin();
-        },
-
-        closeRegister() {
-            this.resetRegistration();
+            this.transitionToRoute('auth.register');
         }
-
 
     }
 });

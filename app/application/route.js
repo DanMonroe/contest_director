@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(ApplicationRouteMixin, {
     beforeModel: function () {
         var request = {
             //contests: this.store.findAll('contest'),
@@ -23,5 +24,13 @@ export default Ember.Route.extend({
 
         return Ember.RSVP.hash(request);
 
+    },
+
+    actions: {
+        clickLogout() {
+            console.log('Lougout');
+
+            this.get('session').invalidate();
+        }
     }
 });

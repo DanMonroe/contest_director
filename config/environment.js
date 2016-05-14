@@ -1,49 +1,58 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
-  var ENV = {
-    modulePrefix: 'contest-director',
-    environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
-    EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-      }
-    },
+module.exports = function (environment) {
+    var ENV = {
+        modulePrefix: 'contest-director',
+        environment: environment,
+        baseURL: '/',
+        locationType: 'auto',
+        EmberENV: {
+            FEATURES: {
+                // Here you can enable experimental features on an ember canary build
+                // e.g. 'with-controller': true
+            }
+        },
 
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+        APP: {
+            // Here you can pass flags/options to your application instance
+            // when it is created
+        },
+        DS: {
+            host: 'http://localhost:4000',
+            namespace: 'api'
+        },
+
+        'ember-simple-auth': {
+            authenticationRoute: 'auth.login',
+            routeIfAlreadyAuthenticated: 'index',
+            routeAfterAuthentication: 'index'
+        }
+    };
+
+    if (environment === 'development') {
+        //ENV['ember-cli-mirage'] = { enabled: false };
+        // ENV.APP.LOG_RESOLVER = true;
+        // ENV.APP.LOG_ACTIVE_GENERATION = true;
+        // ENV.APP.LOG_TRANSITIONS = true;
+        // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+        // ENV.APP.LOG_VIEW_LOOKUPS = true;
     }
-  };
 
-  if (environment === 'development') {
-    //ENV['ember-cli-mirage'] = { enabled: false };
-    ENV.apiHost = 'http://localhost:4000';
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-  }
+    if (environment === 'test') {
+        // Testem prefers this...
+        ENV.baseURL = '/';
+        ENV.locationType = 'none';
 
-  if (environment === 'test') {
-    // Testem prefers this...
-    ENV.baseURL = '/';
-    ENV.locationType = 'none';
+        // keep test console output quieter
+        ENV.APP.LOG_ACTIVE_GENERATION = false;
+        ENV.APP.LOG_VIEW_LOOKUPS = false;
 
-    // keep test console output quieter
-    ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
+        ENV.APP.rootElement = '#ember-testing';
+    }
 
-    ENV.APP.rootElement = '#ember-testing';
-  }
+    if (environment === 'production') {
+        ENV.DS.host = 'https://shielded-peak-76475.herokuapp.com';
+    }
 
-  if (environment === 'production') {
-    ENV.apiHost = 'https://shielded-peak-76475.herokuapp.com';
-  }
-
-  return ENV;
+    return ENV;
 };
