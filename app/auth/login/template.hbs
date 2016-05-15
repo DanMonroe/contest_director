@@ -1,5 +1,6 @@
 {{login-card
     model=model
     onsubmit=(route-action 'doLogin')
-    oncancel=(route-action 'closeLogin')
+    onsecondbutton=(route-action 'doRegistration')
+    oncancel=(route-action 'onCancel')
 }}

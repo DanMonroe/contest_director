@@ -1,5 +1,6 @@
 {{register-card
     model=model
     onsubmit=(route-action 'doRegister')
-    oncancel=(route-action 'closeRegister')
+    onsecondbutton=(route-action 'closeRegister')
+    oncancel=(route-action 'onCancel')
 }}

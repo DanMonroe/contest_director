@@ -12,8 +12,8 @@ export default Component.extend({
             get(this, "onsubmit")(user);
         },
 
-        oncancel() {
-            get(this, "oncancel")();
+        onsecondbutton() {
+            get(this, "onsecondbutton")();
         }
     }
 });

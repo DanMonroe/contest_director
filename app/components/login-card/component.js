@@ -15,8 +15,6 @@ export default Component.extend(Validations, {
     model: null,
 
     emailFieldErrors: computed(function() {
-        //debugger;
-        //model.validations.attrs.email.messages
        return [];
     }),
     disabledLogin: computed("model.userName", "model.password", function() {

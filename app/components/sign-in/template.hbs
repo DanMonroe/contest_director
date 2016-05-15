@@ -1,0 +1,6 @@
+{{#if session.isAuthenticated}}
+    {{#paper-button primary=true onClick=(action "clickSignout")}}sign out{{/paper-button}}
+{{else}}
+    {{#paper-button primary=true onClick=(action "clickLogin")}}login{{/paper-button}}
+{{/if}}
+

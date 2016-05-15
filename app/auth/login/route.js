@@ -8,14 +8,17 @@ export default Route.extend({
 
     actions: {
         doLogin(user) {
-            console.log("login attempted - " + user.get('model.email'));
+            //console.log("login attempted - " + user.get('model.email'));
             const currentuser = this.get('currentModel');
             this.get('session')
                 .authenticate(
                 'authenticator:contestdirector', currentuser.email, currentuser.password
             );
         },
-        closeLogin() {
+        doRegistration() {
+            this.transitionTo('auth.register');
+        },
+        onCancel() {
             this.transitionTo('index');
         }
 

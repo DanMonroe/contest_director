@@ -11,6 +11,10 @@ export default Ember.Route.extend({
 
         closeRegister() {
             this.transitionTo('index');
+        },
+
+        onCancel() {
+            this.transitionTo('index');
         }
 
     },

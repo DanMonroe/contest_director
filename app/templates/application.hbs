@@ -7,8 +7,11 @@
 
                 <span flex></span>
 
-                {{#paper-button primary=true onClick=(action "clickRegistration")}}Register{{/paper-button}}
-                {{#paper-button primary=true onClick=(action "clickLogin")}}Login{{/paper-button}}
+                {{sign-in
+                    clickLogin=(action "clickLogin")
+                    clickRegistration=(action "clickRegistration")
+                    clickSignout=(action "clickSignout")
+                }}
             </div>
         </md-toolbar>
     </md-toolbar>

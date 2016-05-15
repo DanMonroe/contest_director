@@ -8,9 +8,9 @@
 {{#if attrs.onsubmit}}
     {{#paper-dialog-actions class="layout-row"}}
         <span flex></span>
-        {{#if attrs.oncancel}}
-            {{#paper-button primary=true onClick=(action "oncancel")}}{{cancelButtonText}}{{/paper-button}}
+        {{#if attrs.onsecondbutton}}
+            {{#paper-button primary=true onClick=(action "onsecondbutton")}}{{secondButtonText}}{{/paper-button}}
         {{/if}}
-        {{#paper-button primary=true disabled=buttonDisabled onClick=(action "onsubmit" this)}}{{submitButtonText}}{{/paper-button}}
+        {{#paper-button raised=true primary=true disabled=buttonDisabled onClick=(action "onsubmit" this)}}{{submitButtonText}}{{/paper-button}}
     {{/paper-dialog-actions}}
 {{/if}}
