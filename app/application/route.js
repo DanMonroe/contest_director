@@ -5,7 +5,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     beforeModel: function () {
         var request = {
             //contests: this.store.findAll('contest'),
-            //aircrafttypes: this.store.findAll('aircrafttype'),
+            //users: this.store.findAll('user')
+            aircrafttypes: this.store.findAll('aircrafttype')
 
             //pilotclasses: this.store.findAll('pilotclass'),
             //maneuversets: this.store.findAll('maneuverset'),

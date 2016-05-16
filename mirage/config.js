@@ -236,7 +236,7 @@ export default function () {
     this.passthrough('/api/login');
     this.passthrough('/api/token');
     this.passthrough('/api/user/current');
-    //this.passthrough('/api/aircrafttypes');
+    this.passthrough('/api/aircrafttypes');
     //this.passthrough('/api/pilots');
     //this.passthrough('/api/contests');
 
