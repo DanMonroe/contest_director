@@ -4,7 +4,7 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend(ApplicationRouteMixin, {
     beforeModel: function () {
         var request = {
-            //contests: this.store.findAll('contest'),
+            contests: this.store.findAll('contest'),
             //users: this.store.findAll('user')
             aircrafttypes: this.store.findAll('aircrafttype')
 

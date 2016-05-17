@@ -25,18 +25,18 @@ export default function () {
 
 
 
-    this.get('/api/contests', (schema) => {
-        return schema.contest.all();
-    });
-    this.get('/api/aircrafttypes', (schema) => {
-        return schema.aircrafttype.all();
-    });
+    //this.get('/api/contests', (schema) => {
+    //    return schema.contest.all();
+    //});
+    //this.get('/api/aircrafttypes', (schema) => {
+    //    return schema.aircrafttype.all();
+    //});
 
 
 
     this.get('/api/contests/:id');
 
-    this.post('/api/contests');
+    //this.post('/api/contests');
 
 
     this.get('/api/pilotclasses', (db, request) => {
@@ -238,7 +238,7 @@ export default function () {
     this.passthrough('/api/user/current');
     this.passthrough('/api/aircrafttypes');
     //this.passthrough('/api/pilots');
-    //this.passthrough('/api/contests');
+    this.passthrough('/api/contests');
 
 }
 
