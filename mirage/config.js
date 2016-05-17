@@ -39,18 +39,18 @@ export default function () {
     //this.post('/api/contests');
 
 
-    this.get('/api/pilotclasses', (db, request) => {
-        let pilotclasses = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            pilotclasses = db.pilotclass.all();
-        } else {
-            let filteredPilotClasses = request.queryParams['filter[aircrafttypeId]'];
-            pilotclasses = db.pilotclass.where({aircrafttypeId: filteredPilotClasses});
-        }
-
-        return pilotclasses;
-    });
-    this.get('/api/pilotclasses/:id');
+    //this.get('/api/pilotclasses', (db, request) => {
+    //    let pilotclasses = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        pilotclasses = db.pilotclass.all();
+    //    } else {
+    //        let filteredPilotClasses = request.queryParams['filter[aircrafttypeId]'];
+    //        pilotclasses = db.pilotclass.where({aircrafttypeId: filteredPilotClasses});
+    //    }
+    //
+    //    return pilotclasses;
+    //});
+    //this.get('/api/pilotclasses/:id');
 
     this.get('/api/maneuversets', (db, request) => {
         let maneuversets = [];
@@ -238,6 +238,7 @@ export default function () {
     this.passthrough('/api/user/current');
     this.passthrough('/api/aircrafttypes');
     //this.passthrough('/api/pilots');
+    this.passthrough('/api/pilotclasses');
     this.passthrough('/api/contests');
 
 }
