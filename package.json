@@ -47,7 +47,7 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-network": "0.3.0",
-    "ember-paper": "https://github.com/miguelcobain/ember-paper.git#138c5f228537b4b6f44bee913a3d29e80afe4975",
+    "ember-paper": "https://github.com/miguelcobain/ember-paper.git#c129b180c86288ace455405222ceed14a2642294",
     "ember-resolver": "^2.0.3",
     "ember-route-action": "0.0.5",
     "ember-route-action-helper": "0.3.1",

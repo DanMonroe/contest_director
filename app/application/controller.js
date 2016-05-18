@@ -6,6 +6,8 @@ export default Controller.extend({
 
     session: inject.service(),
 
+    adminExpanded: true,
+
     actions: {
         clickLogin() {
             this.transitionToRoute('auth.login');
@@ -17,7 +19,13 @@ export default Controller.extend({
 
         clickSignout() {
             this.get('session').invalidate();
+        },
+
+
+        toggleAdminExpanded() {
+            this.toggleProperty('adminExpanded');
         }
+
 
     }
 });

@@ -1,27 +1,58 @@
+{{#paper-nav-container class="site-nav-container"}}
+    {{#paper-sidenav class="md-sidenav-left md-whiteframe-z2 site-sidenav" locked-open="gt-sm"}}
+        {{#paper-toolbar class="site-content-toolbar" tall=true}}
+            <div class="logo layout-column layout-align-center-center">
 
-<div layout="column">
-    <md-toolbar flex="20" class="md-tall">
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                {{#paper-button target=toggle action="toggleMenu" icon-button=true}}{{paper-icon icon="menu"}}{{/paper-button}}
-
-                <span flex></span>
-
-                {{sign-in
-                    clickLogin=(action "clickLogin")
-                    clickRegistration=(action "clickRegistration")
-                    clickSignout=(action "clickSignout")
-                }}
+                <div>Contest Director</div>
             </div>
+        {{/paper-toolbar}}
+
+        {{#paper-content}}
+
+            {{#paper-list}}
+
+                {{#menu-item active=(is-active 'index' currentRouteName) onClick=(transition-to "index")}}Home{{/menu-item}}
+
+                {{#menu-item onClick=(action 'toggleAdminExpanded') expanded=adminExpanded canExpand=true}}Setup{{/menu-item}}
+
+                <div class="submenu">
+                    {{#liquid-if adminExpanded}}
+                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Aircraft Types{{/submenu-item}}
+                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Pilot Classes{{/submenu-item}}
+                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Maneuver Sets{{/submenu-item}}
+                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Maneuvers{{/submenu-item}}
+                    {{/liquid-if}}
+                </div>
+            {{/paper-list}}
+
+        {{/paper-content}}
+    {{/paper-sidenav}}
+
+    <div layout="column" tabindex="-1" role="main" flex>
+
+        <md-toolbar flex="20" class="md-tall">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    {{#paper-button target=toggle action="toggleMenu" icon-button=true}}{{paper-icon icon="menu"}}{{/paper-button}}
+
+                    <span flex></span>
+
+                    {{sign-in
+                        clickLogin=(action "clickLogin")
+                        clickRegistration=(action "clickRegistration")
+                        clickSignout=(action "clickSignout")
+                    }}
+                </div>
+            </md-toolbar>
         </md-toolbar>
-    </md-toolbar>
 
-    <div layout-align="center start" layout="row">
-        <md-content class="md-whiteframe-z3 move-up" flex="80">
+        <div layout-align="center start" layout="row">
+            <md-content class="md-whiteframe-z3 move-up" flex="80">
 
-            {{liquid-outlet}}
+                {{liquid-outlet}}
 
-        </md-content>
+            </md-content>
+        </div>
     </div>
-</div>
 
+{{/paper-nav-container}}
