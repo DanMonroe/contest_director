@@ -40,7 +40,11 @@ Router.map(function () {
     this.route('login');
     this.route('register');
   });
-  this.route('admin', function() {});
+  this.route('admin', function() {
+    this.route('setup', function() {
+      this.route('aircrafttypes');
+    });
+  });
 });
 
 export default Router;

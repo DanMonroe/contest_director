@@ -17,7 +17,7 @@
 
                 <div class="submenu">
                     {{#liquid-if adminExpanded}}
-                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Aircraft Types{{/submenu-item}}
+                        {{#submenu-item active=(is-active 'admin.setup.aircrafttypes' currentRouteName) onClick=(transition-to "admin.setup.aircrafttypes")}}Aircraft Types{{/submenu-item}}
                         {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Pilot Classes{{/submenu-item}}
                         {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Maneuver Sets{{/submenu-item}}
                         {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Maneuvers{{/submenu-item}}

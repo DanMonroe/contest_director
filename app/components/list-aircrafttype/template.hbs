@@ -1,1 +1,46 @@
-{{yield}}
+<md-list-item class="md-1-line titleHeight">
+    <div class="md-no-style md-list-item-inner">
+        Aircraft Types
+        {{#unless isEditing}}
+            {{#paper-button icon-button=true mini=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+        {{/unless}}
+    </div>
+</md-list-item>
+
+{{paper-divider}}
+
+<md-content class="md-padding">
+
+    {{#liquid-if isEditing class="new-contest"}}
+
+        <div class="md-padding">
+            {{paper-input label="Aircraft Type Name" onChange=(action (mut name)) value=name required=true required-errortext="Name is required"}}
+
+            <div class="layout-row layout-align-end-center">
+
+                {{#paper-button raised=true primary=true onClick=(action "save")}}Save{{/paper-button}}
+                {{#paper-button raised=true onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
+            </div>
+        </div>
+
+    {{else}}
+
+        {{#paper-list}}
+            {{#each content as |aircrafttype|}}
+                {{#paper-item}}
+                    <div class="md-list-item-text">
+                        <h3>{{aircrafttype.name}}</h3>
+                    </div>
+                {{/paper-item}}
+                {{paper-divider}} {{! OR {{paper-divider inset=true}}
+            {{else}}
+                {{#paper-item}}
+                    Click the red button to add an aircraft type.
+                {{/paper-item}}
+            {{/each}}
+        {{/paper-list}}
+
+    {{/liquid-if}}
+
+</md-content>
+
