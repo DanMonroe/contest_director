@@ -13,30 +13,37 @@ export default Ember.Component.extend({
 
     isEditing: false,
 
-
     aircrafttypeLabelCallback(item) {
-        // using ember data, this might be 'item.get('name')'
         return item.get('name');
     },
 
     selectedAircraftType: null,
 
-    filteredPilotClasses: computed("selectedAircraftType", function() {
-        return get(this, "selectedAircraftType.name");
+    addButtonDisabled: computed.not("selectedAircraftType"),
+
+    filteredPilotClasses: computed("selectedAircraftType.id", function() {
+
+        let selectedAircraftId = get(this, "selectedAircraftType.id");
+        if (Ember.isNone(selectedAircraftId)) {
+            return new Ember.A();
+        }
+        let allClasses = get(this, "content.pilotclasses");
+        let returnClasses = allClasses.filter(function(pilotClass) {
+            return pilotClass.get("aircrafttype.id") === selectedAircraftId;
+        });
+        return returnClasses;
     }),
 
     actions: {
-        //changedAircraftType(selected) {
-        //    debugger;
-        //    console.log(selected);
-        //},
 
         save() {
             let name = this.get("name");
-
+            let atype = get(this, "selectedAircraftType");
+            console.log(atype);
             if (isPresent(name)) {
                 var newPilotClass = this.get("store").createRecord('pilotclass', {
-                    name: name
+                    name: name,
+                    aircrafttype: atype
                 });
 
                 newPilotClass.save().then(() => {

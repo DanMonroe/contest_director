@@ -2,7 +2,9 @@
     <div class="md-no-style md-list-item-inner">
         Pilot Classes
         {{#unless isEditing}}
-            {{#paper-button icon-button=true mini=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+            {{#if selectedAircraftType}}
+                {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+            {{/if}}
         {{/unless}}
     </div>
 </md-list-item>
@@ -11,50 +13,48 @@
 
 <md-content class="md-padding">
 
+    <p>Select an aircraft type to filter the available pilot classes.</p>
+    <p>
+    {{#paper-select
+        placeholder="Aircraft Type"
+        value=selectedAircraftType
+        itemLabelCallback=aircrafttypeLabelCallback
+        onChange=(action (mut selectedAircraftType))
+    }}
+        {{#each content.aircrafttypes as |aircrafttype|}}
+            {{#paper-option value=aircrafttype}}
+                {{aircrafttype.name}}
+            {{/paper-option}}
+        {{/each}}
+    {{/paper-select}}
+    </p>
+
     {{#liquid-if isEditing class="new-contest"}}
 
-        <div class="md-padding">
             {{paper-input label="Pilot Class Name" onChange=(action (mut name)) value=name required=true required-errortext="Name is required"}}
 
             <div class="layout-row layout-align-end-center">
 
                 {{#paper-button onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
-                {{#paper-button  primary=true onClick=(action "save")}}Save Pilot Class{{/paper-button}}
+                {{#paper-button primary=true onClick=(action "save")}}Save Pilot Class{{/paper-button}}
             </div>
-        </div>
 
     {{else}}
-
-
-        {{#paper-select
-            placeholder="Aircraft Type"
-            value=selectedAircraftType
-            itemLabelCallback=aircrafttypeLabelCallback
-            onChange=(action (mut selectedAircraftType))
-        }}
-            {{#each content.aircrafttypes as |aircrafttype|}}
-                {{#paper-option value=aircrafttype}}
-                    {{aircrafttype.name}}
-                {{/paper-option}}
-            {{/each}}
-        {{/paper-select}}
-
-
-    [{{filteredPilotClasses}}]
-
-            {{#paper-list}}
-            {{#each content.pilotclasses as |pilotclass|}}
+        {{#paper-list}}
+            {{#each filteredPilotClasses as |pilotclass|}}
                 {{#paper-item}}
                     <div class="md-list-item-text">
                         <h3>{{pilotclass.name}}</h3>
                     </div>
                 {{/paper-item}}
                 {{paper-divider}} {{! OR {{paper-divider inset=true}}
-            {{else}}
+            {{/each}}
+            {{#if selectedAircraftType}}
                 {{#paper-item}}
                     Click the red button to add a pilot class.
                 {{/paper-item}}
-            {{/each}}
+
+            {{/if}}
         {{/paper-list}}
 
     {{/liquid-if}}
