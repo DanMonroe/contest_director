@@ -1,11 +1,12 @@
+<md-list-item class="md-1-line titleHeight">
+    <div class="md-no-style md-list-item-inner">
+        {{contest.name}}
+    </div>
+</md-list-item>
 
-    <md-list-item class="md-1-line titleHeight">
-        <div class="md-no-style md-list-item-inner">
-            {{contest.name}}
-        </div>
-    </md-list-item>
+{{paper-divider}}
 
-    {{paper-divider}}
+<md-content class="md-padding">
 
     {{#paper-list}}
         {{#each filteredPilotClasses as |pilotclass|}}
@@ -20,3 +21,4 @@
         {{/each}}
     {{/paper-list}}
 
+</md-content>

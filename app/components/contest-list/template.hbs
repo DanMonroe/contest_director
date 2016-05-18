@@ -9,21 +9,22 @@
 
 {{paper-divider}}
 
-{{#liquid-if isEditing class="new-contest"}}
+<md-content class="md-padding">
 
-    <div class="md-padding">
-        {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true required-errortext="Contest name is required"}}
+    {{#liquid-if isEditing class="new-contest"}}
 
-        <div class="layout-row layout-align-end-center">
+        <div class="md-padding">
+            {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true required-errortext="Contest name is required"}}
 
-            {{#paper-button raised=true primary=true onClick=(action "saveContest")}}Save Contest{{/paper-button}}
-            {{#paper-button raised=true onClick=(action "toggleContest")}}Cancel{{/paper-button}}
+            <div class="layout-row layout-align-end-center">
+
+                {{#paper-button raised=true primary=true onClick=(action "saveContest")}}Save Contest{{/paper-button}}
+                {{#paper-button raised=true onClick=(action "toggleContest")}}Cancel{{/paper-button}}
+            </div>
         </div>
-    </div>
 
-{{else}}
+    {{else}}
 
-    <md-content class="md-padding">
         {{#paper-list}}
             {{#each content as |contest|}}
                 {{#paper-item}}
@@ -41,7 +42,8 @@
                 {{/paper-item}}
             {{/each}}
         {{/paper-list}}
-    </md-content>
 
-{{/liquid-if}}
+    {{/liquid-if}}
+
+</md-content>
 
