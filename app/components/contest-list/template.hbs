@@ -23,6 +23,7 @@
 
 {{else}}
 
+    <md-content class="md-padding">
         {{#paper-list}}
             {{#each content as |contest|}}
                 {{#paper-item}}
@@ -40,6 +41,7 @@
                 {{/paper-item}}
             {{/each}}
         {{/paper-list}}
+    </md-content>
 
 {{/liquid-if}}
 
