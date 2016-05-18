@@ -1,0 +1,16 @@
+{{#paper-toolbar class="md-whiteframe-5dp page-main-toolbar" as |toolbar|}}
+    {{#toolbar.tools}}
+        {{#paper-sidenav-toggle as |toggle|}}
+            {{#paper-button onClick=(action "toggleMenu" target=toggle) iconButton=true}}
+                {{paper-icon "menu"}}
+            {{/paper-button}}
+        {{/paper-sidenav-toggle}}
+        <span flex></span>
+
+        {{sign-in
+            clickLogin=(action "clickLogin")
+            clickRegistration=(action "clickRegistration")
+            clickSignout=(action "clickSignout")
+        }}
+    {{/toolbar.tools}}
+{{/paper-toolbar}}

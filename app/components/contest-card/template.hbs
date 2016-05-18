@@ -1,22 +1,22 @@
-<md-list-item class="md-1-line titleHeight">
-    <div class="md-no-style md-list-item-inner">
-        {{contest.name}}
-    </div>
-</md-list-item>
 
-{{paper-divider}}
+    <md-list-item class="md-1-line titleHeight">
+        <div class="md-no-style md-list-item-inner">
+            {{contest.name}}
+        </div>
+    </md-list-item>
 
+    {{paper-divider}}
 
+    {{#paper-list}}
+        {{#each filteredPilotClasses as |pilotclass|}}
 
-        {{#paper-list}}
-            {{#each filteredPilotClasses as |pilotclass|}}
-                {{paper-divider}}
+                <div class="md-list-item-text">
+                    <h3>{{pilotclass.name}}</h3>
+                    {{registered-pilots-by-pilotclass contest=contest pilotclass=pilotclass}}
+                    {{rounds-by-pilotclass contest=contest pilotclass=pilotclass onCreateRound=onCreateRound}}
+                </div>
 
-                    <div class="md-list-item-text">
-                        <h3>{{pilotclass.name}}</h3>
-                        {{registered-pilots-by-pilotclass contest=contest pilotclass=pilotclass}}
-                        {{rounds-by-pilotclass contest=contest pilotclass=pilotclass onCreateRound=onCreateRound}}
-                    </div>
+            {{paper-divider}}
+        {{/each}}
+    {{/paper-list}}
 
-            {{/each}}
-        {{/paper-list}}

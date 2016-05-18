@@ -1,5 +1,5 @@
 {{#paper-nav-container class="site-nav-container"}}
-    {{#paper-sidenav class="md-sidenav-left md-whiteframe-z2 site-sidenav" locked-open="gt-sm"}}
+    {{#paper-sidenav class="md-sidenav-left md-whiteframe-z3 site-sidenav" locked-open="gt-sm"}}
         {{#paper-toolbar class="site-content-toolbar" tall=true}}
             <div class="logo layout-column layout-align-center-center">
 
@@ -30,29 +30,20 @@
 
     <div layout="column" tabindex="-1" role="main" flex>
 
-        <md-toolbar flex="20" class="md-tall">
-            <md-toolbar>
-                <div class="md-toolbar-tools">
-                    {{#paper-button target=toggle action="toggleMenu" icon-button=true}}{{paper-icon icon="menu"}}{{/paper-button}}
+        {{page-toolbar
+            clickLogin=(action "clickLogin")
+            clickRegistration=(action "clickRegistration")
+            clickSignout=(action "clickSignout")
+        }}
 
-                    <span flex></span>
-
-                    {{sign-in
-                        clickLogin=(action "clickLogin")
-                        clickRegistration=(action "clickRegistration")
-                        clickSignout=(action "clickSignout")
-                    }}
-                </div>
-            </md-toolbar>
-        </md-toolbar>
-
-        <div layout-align="center start" layout="row">
-            <md-content class="md-whiteframe-z3 move-up" flex="80">
+        {{#paper-content flex=true scroll-y=true layout-padding=true}}
+            <div class="doc-content">
 
                 {{liquid-outlet}}
 
-            </md-content>
-        </div>
+            </div>
+        {{/paper-content}}
+
     </div>
 
 {{/paper-nav-container}}
