@@ -11,7 +11,7 @@ export default Route.extend({
             //console.log("login attempted - " + user.get('model.email'));
             const currentuser = this.get('currentModel');
             this.get('session').authenticate(
-                'authenticator:contestdirector',
+                'authenticator:oauth2',
                 currentuser.email,
                 currentuser.password
             ).then(() => {
