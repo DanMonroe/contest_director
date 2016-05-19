@@ -1,0 +1,78 @@
+<md-list-item class="md-1-line titleHeight">
+    <div class="md-no-style md-list-item-inner">
+        Maneuver Sets
+        {{#unless isEditing}}
+            {{#if selectedPilotClass}}
+                {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+            {{/if}}
+        {{/unless}}
+    </div>
+</md-list-item>
+
+{{paper-divider}}
+
+<md-content class="md-padding">
+
+    <p>Select an aircraft type and pilot class to filter the available maneuver sets.</p>
+    <p>
+        {{#paper-select
+        placeholder="Aircraft Type"
+        value=selectedAircraftType
+        itemLabelCallback=selectLabelCallback
+        onChange=(action (mut selectedAircraftType))
+        }}
+            {{#each content.aircrafttypes as |aircrafttype|}}
+                {{#paper-option value=aircrafttype}}
+                    {{aircrafttype.name}}
+                {{/paper-option}}
+            {{/each}}
+        {{/paper-select}}
+
+        {{#if selectedAircraftType}}
+            {{#paper-select
+            placeholder="Pilot Class"
+            value=selectedPilotClass
+            itemLabelCallback=selectLabelCallback
+            onChange=(action (mut selectedPilotClass))
+            }}
+                {{#each filteredPilotClasses as |pilotclass|}}
+                    {{#paper-option value=pilotclass}}
+                        {{pilotclass.name}}
+                    {{/paper-option}}
+                {{/each}}
+            {{/paper-select}}
+        {{/if}}
+    </p>
+
+    {{#liquid-if isEditing class="new-contest"}}
+
+        {{paper-input label="Maneuver Set Name" onChange=(action (mut name)) value=name required=true required-errortext="Name is required"}}
+
+        <div class="layout-row layout-align-end-center">
+
+            {{#paper-button onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
+            {{#paper-button primary=true onClick=(action "save")}}Save Maneuver Set{{/paper-button}}
+        </div>
+
+    {{else}}
+        {{#paper-list}}
+            {{#each filteredManeuverSets as |maneuverset|}}
+                {{#paper-item}}
+                    <div class="md-list-item-text">
+                        <h3>{{maneuverset.name}}</h3>
+                    </div>
+                {{/paper-item}}
+                {{paper-divider}} {{! OR {{paper-divider inset=true}}
+            {{/each}}
+            {{#if selectedPilotClass}}
+                {{#paper-item}}
+                    Click the red button to add a maneuver set.
+                {{/paper-item}}
+
+            {{/if}}
+        {{/paper-list}}
+
+    {{/liquid-if}}
+
+</md-content>
+

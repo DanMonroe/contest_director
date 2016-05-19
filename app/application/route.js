@@ -8,8 +8,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
             //users: this.store.findAll('user')
             aircrafttypes: this.store.findAll('aircrafttype'),
 
-            pilotclasses: this.store.findAll('pilotclass')
-            //maneuversets: this.store.findAll('maneuverset'),
+            pilotclasses: this.store.findAll('pilotclass'),
+            maneuversets: this.store.findAll('maneuverset')
             //maneuvers: this.store.findAll('maneuver'),
             //registrations: this.store.findAll('registration'),
             //rounds: this.store.findAll('round'),

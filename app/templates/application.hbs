@@ -19,8 +19,8 @@
                     {{#liquid-if adminExpanded}}
                         {{#submenu-item active=(is-active 'admin.setup.aircrafttypes' currentRouteName) onClick=(transition-to "admin.setup.aircrafttypes")}}Aircraft Types{{/submenu-item}}
                         {{#submenu-item active=(is-active 'admin.setup.pilotclasses' currentRouteName) onClick=(transition-to "admin.setup.pilotclasses")}}Pilot Classes{{/submenu-item}}
-                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Maneuver Sets{{/submenu-item}}
-                        {{#submenu-item active=(is-active 'demo.autocomplete' currentRouteName) onClick=(transition-to "demo.autocomplete")}}Maneuvers{{/submenu-item}}
+                        {{#submenu-item active=(is-active 'admin.setup.maneuversets' currentRouteName) onClick=(transition-to "admin.setup.maneuversets")}}Maneuver Sets{{/submenu-item}}
+                        {{#submenu-item active=(is-active 'admin.setup.maneuvers' currentRouteName) onClick=(transition-to "admin.setup.maneuvers")}}Maneuvers{{/submenu-item}}
                     {{/liquid-if}}
                 </div>
             {{/paper-list}}
