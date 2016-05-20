@@ -66,18 +66,18 @@ export default function () {
     //});
     //this.get('/api/maneuversets/:id');
 
-    this.get('/api/maneuvers', function (db, request) {
-        let maneuvers = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            maneuvers = db.maneuver.all();
-        } else {
-            let filteredManeuvers = request.queryParams['filter[maneuversetId]'];
-            maneuvers = db.maneuver.where({maneuversetId: filteredManeuvers});
-        }
-
-        return maneuvers;
-    });
-    this.get('/api/maneuvers/:id');
+    //this.get('/api/maneuvers', function (db, request) {
+    //    let maneuvers = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        maneuvers = db.maneuver.all();
+    //    } else {
+    //        let filteredManeuvers = request.queryParams['filter[maneuversetId]'];
+    //        maneuvers = db.maneuver.where({maneuversetId: filteredManeuvers});
+    //    }
+    //
+    //    return maneuvers;
+    //});
+    //this.get('/api/maneuvers/:id');
 
     this.get('/api/rounds', (db, request) => {
         let rounds = [];
@@ -152,18 +152,18 @@ export default function () {
 //        return newRound;
 //    });
 
-    this.get('/api/pilots', (db, request) => {
-        let pilots = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            pilots = db.pilot.all();
-        } else {
-            let filteredPilots = request.queryParams['filter[pilotId]'];
-            pilots = db.pilot.where({pilotId: filteredPilots});
-        }
-
-        return pilots;
-    });
-    this.get('/api/pilots/:id');
+    //this.get('/api/pilots', (db, request) => {
+    //    let pilots = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        pilots = db.pilot.all();
+    //    } else {
+    //        let filteredPilots = request.queryParams['filter[pilotId]'];
+    //        pilots = db.pilot.where({pilotId: filteredPilots});
+    //    }
+    //
+    //    return pilots;
+    //});
+    //this.get('/api/pilots/:id');
 
 
     this.get('/api/registrations', (db, request) => {
@@ -237,10 +237,11 @@ export default function () {
     this.passthrough('/api/token');
     this.passthrough('/api/user/current');
     this.passthrough('/api/aircrafttypes');
-    //this.passthrough('/api/pilots');
     this.passthrough('/api/pilotclasses');
     this.passthrough('/api/contests');
     this.passthrough('/api/maneuversets');
+    this.passthrough('/api/maneuvers');
+    this.passthrough('/api/pilots');
 
 }
 

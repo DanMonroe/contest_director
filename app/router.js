@@ -46,6 +46,7 @@ Router.map(function () {
       this.route('pilotclasses');
       this.route('maneuversets');
       this.route('maneuvers');
+      this.route('pilots');
     });
   });
 });
