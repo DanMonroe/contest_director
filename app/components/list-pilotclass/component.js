@@ -47,6 +47,7 @@ export default Ember.Component.extend({
                 });
 
                 newPilotClass.save().then(() => {
+                    this.set("name", null);
                     this.toggleProperty("isEditing");
                 });
 

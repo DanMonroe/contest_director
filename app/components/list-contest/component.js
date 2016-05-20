@@ -20,6 +20,7 @@ export default Ember.Component.extend({
                 });
 
                 newContest.save().then(() => {
+                    this.set("name", null);
                     this.toggleProperty("isEditing");
                 });
 

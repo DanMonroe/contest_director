@@ -14,7 +14,7 @@
     {{#liquid-if isEditing class="new-contest"}}
 
         <div class="md-padding">
-            {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true required-errortext="Contest name is required"}}
+            {{paper-input label="Contest Name" onChange=(action (mut name)) value=name required=true errorMessages=(hash required="Contest name is required")}}
 
             <div class="layout-row layout-align-end-center">
 

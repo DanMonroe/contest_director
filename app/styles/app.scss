@@ -55,6 +55,12 @@ md-toolbar.md-warn {
   }
 }
 
+.save.md-button.md-default-theme.md-fab, .save.md-button.md-fab {
+  &:hover {
+    background-color: #259b24;
+  }
+  background-color: #259b24;
+}
 
 
 
@@ -141,11 +147,11 @@ md-content.md-padding {
 
 
 
-.md-button-header-right.md-fab.md-warn.ember-view.paper-button.md-default-theme.md-button {
-  position: absolute;
-  right: 15px;
-  bottom: -32px;
-}
+//.md-button-header-right.md-fab.md-warn.ember-view.paper-button.md-default-theme.md-button {
+//  position: absolute;
+//  right: 15px;
+//  bottom: -32px;
+//}
 
 .card-header {
   padding: 20px 16px;

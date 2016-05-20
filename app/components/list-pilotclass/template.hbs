@@ -1,11 +1,6 @@
 <md-list-item class="md-1-line titleHeight">
     <div class="md-no-style md-list-item-inner">
         Pilot Classes
-        {{#unless isEditing}}
-            {{#if selectedAircraftType}}
-                {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
-            {{/if}}
-        {{/unless}}
     </div>
 </md-list-item>
 
@@ -29,33 +24,45 @@
     {{/paper-select}}
     </p>
 
+    {{#if filteredPilotClasses}}
+        {{#paper-card as |card|}}
+            {{#paper-list}}
+                {{#each filteredPilotClasses as |pilotclass|}}
+                    {{#paper-item}}
+                        <div class="md-list-item-text">
+                            <p>{{pilotclass.name}}</p>
+                        </div>
+                    {{/paper-item}}
+                    {{paper-divider}} {{! OR {{paper-divider inset=true}}
+                {{/each}}
+            {{/paper-list}}
+            <div layout="row" layout-align="end center">
+                {{#unless isEditing}}
+                    {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+                {{/unless}}
+            </div>
+        {{/paper-card}}
+    {{/if}}
+
     {{#liquid-if isEditing class="new-contest"}}
 
-            {{paper-input label="Pilot Class Name" onChange=(action (mut name)) value=name required=true required-errortext="Name is required"}}
+        {{#paper-card as |card|}}
+            {{#card.title as |title|}}
+                {{#title.text as |text|}}
+                    {{#text.headline}}New Pilot Class{{/text.headline}}
+                {{/title.text}}
+            {{/card.title}}
 
-            <div class="layout-row layout-align-end-center">
+            {{#card.content class="layout-row layout-align-space-between"}}
+                {{paper-input flex=true label="Pilot Class Name" onChange=(action (mut name)) value=name required=true errorMessages=(hash required="Name is required")}}
+            {{/card.content}}
 
+
+            {{#card.actions}}
                 {{#paper-button onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
-                {{#paper-button primary=true onClick=(action "save")}}Save Pilot Class{{/paper-button}}
-            </div>
-
-    {{else}}
-        {{#paper-list}}
-            {{#each filteredPilotClasses as |pilotclass|}}
-                {{#paper-item}}
-                    <div class="md-list-item-text">
-                        <h3>{{pilotclass.name}}</h3>
-                    </div>
-                {{/paper-item}}
-                {{paper-divider}} {{! OR {{paper-divider inset=true}}
-            {{/each}}
-            {{#if selectedAircraftType}}
-                {{#paper-item}}
-                    Click the red button to add a pilot class.
-                {{/paper-item}}
-
-            {{/if}}
-        {{/paper-list}}
+                {{#paper-button primary=true onClick=(action "save")}}Save{{/paper-button}}
+            {{/card.actions}}
+        {{/paper-card}}
 
     {{/liquid-if}}
 

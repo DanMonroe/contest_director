@@ -52,21 +52,38 @@ export default Ember.Component.extend({
         return returnManSets;
     }),
 
+    selectedManeuverSet: null,
+
+    filteredManeuvers: computed("selectedManeuverSet.id", function() {
+
+        let selectedManeuverSetId = get(this, "selectedManeuverSet.id");
+        if (Ember.isNone(selectedManeuverSetId)) {
+            return new Ember.A();
+        }
+        let allManeuvers = get(this, "content.maneuvers");
+        let returnManeuvers = allManeuvers.filter(function(maneuver) {
+            return maneuver.get("maneuverset.id") === selectedManeuverSetId;
+        });
+        return returnManeuvers;
+    }),
+
     actions: {
 
         save() {
             let name = this.get("name");
             let atype = get(this, "selectedAircraftType");
             let pilotclass = get(this, "selectedPilotClass");
+            let maneuverset = get(this, "selectedManeuverSet");
             console.log(pilotclass);
             if (isPresent(name)) {
-                var newManeuverSet = this.get("store").createRecord('maneuverset', {
+                var newManeuver = this.get("store").createRecord('maneuver', {
                     name: name,
                     aircrafttype: atype,
-                    pilotclass: pilotclass
+                    pilotclass: pilotclass,
+                    maneuverset: maneuverset
                 });
 
-                newManeuverSet.save().then(() => {
+                newManeuver.save().then(() => {
                     this.set("name", null);
                     this.toggleProperty("isEditing");
                 });

@@ -1,0 +1,105 @@
+<md-list-item class="md-1-line titleHeight">
+    <div class="md-no-style md-list-item-inner">
+        Maneuvers
+    </div>
+</md-list-item>
+
+{{paper-divider}}
+
+<md-content class="md-padding">
+
+    <p>Select an aircraft type, pilot class, and maneuver set to filter the available maneuvers.</p>
+    <p>
+        {{#paper-select
+        placeholder="Aircraft Type"
+        value=selectedAircraftType
+        itemLabelCallback=selectLabelCallback
+        onChange=(action (mut selectedAircraftType))
+        }}
+            {{#each content.aircrafttypes as |aircrafttype|}}
+                {{#paper-option value=aircrafttype}}
+                    {{aircrafttype.name}}
+                {{/paper-option}}
+            {{/each}}
+        {{/paper-select}}
+
+        {{#if selectedAircraftType}}
+            {{#paper-select
+            placeholder="Pilot Class"
+            value=selectedPilotClass
+            itemLabelCallback=selectLabelCallback
+            onChange=(action (mut selectedPilotClass))
+            }}
+                {{#each filteredPilotClasses as |pilotclass|}}
+                    {{#paper-option value=pilotclass}}
+                        {{pilotclass.name}}
+                    {{/paper-option}}
+                {{/each}}
+            {{/paper-select}}
+        {{/if}}
+
+        {{#if selectedPilotClass}}
+            {{#paper-select
+            placeholder="Maneuver Set"
+            value=selectedManeuverSet
+            itemLabelCallback=selectLabelCallback
+            onChange=(action (mut selectedManeuverSet))
+            }}
+                {{#each filteredManeuverSets as |maneuverset|}}
+                    {{#paper-option value=maneuverset}}
+                        {{maneuverset.name}}
+                    {{/paper-option}}
+                {{/each}}
+            {{/paper-select}}
+        {{/if}}
+    </p>
+
+    {{#if selectedManeuverSet}}
+        {{#paper-card as |card|}}
+            {{#paper-list}}
+                {{#each filteredManeuvers as |maneuver|}}
+                    {{#paper-item}}
+                        <div class="md-list-item-text">
+                            <p>{{maneuver.name}}</p>
+                        </div>
+                    {{/paper-item}}
+                    {{paper-divider}} {{! OR {{paper-divider inset=true}}
+                {{/each}}
+            {{/paper-list}}
+            {{#unless isEditing}}
+                <div layout="row" layout-align="end center">
+                    {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+                </div>
+            {{/unless}}
+        {{/paper-card}}
+    {{/if}}
+
+    {{#liquid-if isEditing class="new-contest"}}
+
+        {{#paper-card as |card|}}
+            {{#card.title as |title|}}
+                {{#title.text as |text|}}
+                    {{#text.headline}}New Maneuver{{/text.headline}}
+                {{/title.text}}
+            {{/card.title}}
+
+            {{#card.content class="layout-row layout-align-space-between"}}
+                {{paper-input flex=true label="Maneuver Name" onChange=(action (mut name)) value=name required=true errorMessages=(hash required="Name is required")}}
+            {{/card.content}}
+            {{#card.content class="layout-row layout-align-space-between"}}
+                {{paper-input label="Min Score" type=number onChange=(action (mut minScore)) value=minScore required=true errorMessages=(hash required="Minimum score is required")}}
+                {{paper-input label="Max Score" type=number onChange=(action (mut maxScore)) value=maxScore required=true errorMessages=(hash required="Maximum score is required")}}
+                {{paper-input label="Multiplier" type=number onChange=(action (mut kfactor)) value=kfactor required=true errorMessages=(hash required="Multiplie is required")}}
+            {{/card.content}}
+
+            {{#card.actions}}
+                {{#paper-button onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
+                {{#paper-button primary=true onClick=(action "save")}}Save{{/paper-button}}
+            {{/card.actions}}
+        {{/paper-card}}
+
+    {{/liquid-if}}
+
+
+</md-content>
+

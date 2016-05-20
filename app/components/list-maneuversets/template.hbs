@@ -1,11 +1,6 @@
 <md-list-item class="md-1-line titleHeight">
     <div class="md-no-style md-list-item-inner">
         Maneuver Sets
-        {{#unless isEditing}}
-            {{#if selectedPilotClass}}
-                {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-button-header-right md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
-            {{/if}}
-        {{/unless}}
     </div>
 </md-list-item>
 
@@ -44,35 +39,48 @@
         {{/if}}
     </p>
 
+        {{#if selectedPilotClass}}
+            {{#paper-card as |card|}}
+                {{#paper-list}}
+                    {{#each filteredManeuverSets as |maneuverset|}}
+                        {{#paper-item}}
+                            <div class="md-list-item-text">
+                                <p>{{maneuverset.name}}</p>
+                            </div>
+                        {{/paper-item}}
+                        {{paper-divider}} {{! OR {{paper-divider inset=true}}
+                    {{/each}}
+                {{/paper-list}}
+                {{#unless isEditing}}
+                    <div layout="row" layout-align="end center">
+                        {{#paper-button disabled=addButtonDisabled icon-button=true mini=true class="md-fab md-warn" onClick=(action "toggleEditing")}}{{paper-icon icon="add"}}{{/paper-button}}
+                    </div>
+                {{/unless}}
+            {{/paper-card}}
+        {{/if}}
     {{#liquid-if isEditing class="new-contest"}}
 
-        {{paper-input label="Maneuver Set Name" onChange=(action (mut name)) value=name required=true required-errortext="Name is required"}}
+        {{#paper-card as |card|}}
+            {{#card.title as |title|}}
+                {{#title.text as |text|}}
+                    {{#text.headline}}New Maneuver Set{{/text.headline}}
+                {{/title.text}}
+            {{/card.title}}
 
-        <div class="layout-row layout-align-end-center">
+            {{#card.content class="layout-row layout-align-space-between"}}
+                {{paper-input flex=true label="Maneuver Set Name" onChange=(action (mut name)) value=name required=true errorMessages=(hash required="Name is required")}}
+            {{/card.content}}
 
-            {{#paper-button onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
-            {{#paper-button primary=true onClick=(action "save")}}Save Maneuver Set{{/paper-button}}
-        </div>
+            {{#card.actions}}
+                {{#paper-button onClick=(action "toggleEditing")}}Cancel{{/paper-button}}
+                {{#paper-button primary=true onClick=(action "save")}}Save{{/paper-button}}
+            {{/card.actions}}
+        {{/paper-card}}
 
-    {{else}}
-        {{#paper-list}}
-            {{#each filteredManeuverSets as |maneuverset|}}
-                {{#paper-item}}
-                    <div class="md-list-item-text">
-                        <h3>{{maneuverset.name}}</h3>
-                    </div>
-                {{/paper-item}}
-                {{paper-divider}} {{! OR {{paper-divider inset=true}}
-            {{/each}}
-            {{#if selectedPilotClass}}
-                {{#paper-item}}
-                    Click the red button to add a maneuver set.
-                {{/paper-item}}
-
-            {{/if}}
-        {{/paper-list}}
 
     {{/liquid-if}}
+
+
 
 </md-content>
 

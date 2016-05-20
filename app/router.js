@@ -45,6 +45,7 @@ Router.map(function () {
       this.route('aircrafttypes');
       this.route('pilotclasses');
       this.route('maneuversets');
+      this.route('maneuvers');
     });
   });
 });
