@@ -67,6 +67,20 @@ export default Ember.Component.extend({
         return returnManeuvers;
     }),
 
+    // TODO remove hack
+    watchAircraftTypeChange: computed("selectedAircraftType", function() {
+        this.set("selectedPilotClass", null);
+        this.set("selectedManeuverSet", null);
+        return "";
+    }),
+
+    // TODO remove hack
+    watchPilotClassChange: computed("selectedPilotClass", function() {
+        this.set("selectedManeuverSet", null);
+        return "";
+    }),
+
+
     actions: {
 
         save() {

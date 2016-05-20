@@ -52,13 +52,19 @@ export default Ember.Component.extend({
         return returnManSets;
     }),
 
+    // TODO remove hack
+    watchAircraftTypeChange: computed("selectedAircraftType", function() {
+       this.set("selectedPilotClass", null);
+       return "";
+    }),
+
     actions: {
 
         save() {
             let name = this.get("name");
             let atype = get(this, "selectedAircraftType");
             let pilotclass = get(this, "selectedPilotClass");
-            console.log(pilotclass);
+
             if (isPresent(name)) {
                 var newManeuverSet = this.get("store").createRecord('maneuverset', {
                     name: name,
