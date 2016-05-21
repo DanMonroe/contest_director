@@ -1,2 +1,8 @@
-{{contest-card contest=model.contest pilots=model.pilots onCreateRound=(action "createNewRound")}}
+{{contest-card
+    contest=model.contest
+    pilots=model.pilots
+    contestregistrations=model.contestregistrations
+    onCreateRound=(action "createNewRound")
+    onRegisterPilot=(action "registerPilot")
+}}
 

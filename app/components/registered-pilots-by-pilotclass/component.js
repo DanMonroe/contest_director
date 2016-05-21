@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, inject} = Ember;
+const { computed, get, inject} = Ember;
 
 export default Ember.Component.extend({
 
@@ -10,15 +10,10 @@ export default Ember.Component.extend({
 
     pilotclass: null,
 
-    showRegistrations: false,
+    showRegistrations: true,
 
-    filteredRegistrations: computed('contest.id', 'pilotclass.id', function () {
-        return this.get("store").query('contestregistration', {
-            filter: {
-                contestId: this.get("contest.id"),
-                pilotclassId: this.get("pilotclass.id")
-            }
-        });
+    filteredRegistrations: computed.filter('contestregistrations', function(registration) {
+        return get(registration, 'pilotclass.id') === get(this, 'pilotclass.id');
     }),
 
     actions: {

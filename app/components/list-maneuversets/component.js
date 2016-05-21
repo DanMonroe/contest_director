@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
     addButtonDisabled: computed.not("selectedPilotClass"),
 
-    filteredPilotClasses: computed("selectedAircraftType.id", function() {
+    filteredPilotClasses: computed("content.pilotclasses.[]", "selectedAircraftType.id", function() {
 
         // TODO reset pilot class drop down
         //this.set("selectedPilotClass", null);
@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 
     selectedPilotClass: null,
 
-    filteredManeuverSets: computed("selectedPilotClass.id", function() {
+    filteredManeuverSets: computed("content.maneuversets.[]", "selectedPilotClass.id", function() {
 
         let selectedPilotClassId = get(this, "selectedPilotClass.id");
         if (Ember.isNone(selectedPilotClassId)) {

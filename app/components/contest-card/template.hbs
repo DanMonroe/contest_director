@@ -8,6 +8,7 @@
 
 <md-content class="md-padding">
 
+    <p>{{totalRegistrations}} pilots registered</p>
 
     {{#if isRegistering}}
         {{#paper-card as |card|}}
@@ -65,7 +66,11 @@
 
                 <div class="md-list-item-text">
                     <h3>{{pilotclass.name}}</h3>
-                    {{registered-pilots-by-pilotclass contest=contest pilotclass=pilotclass}}
+                    {{registered-pilots-by-pilotclass
+                        contest=contest
+                        pilotclass=pilotclass
+                        contestregistrations=contestregistrations
+                    }}
                     {{rounds-by-pilotclass contest=contest pilotclass=pilotclass onCreateRound=onCreateRound}}
                 </div>
 

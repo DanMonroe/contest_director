@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
     addButtonDisabled: computed.not("selectedPilotClass"),
 
-    filteredPilotClasses: computed("selectedAircraftType.id", function() {
+    filteredPilotClasses: computed("content.pilotclasses.[]", "selectedAircraftType.id", function() {
 
         // TODO reset pilot class drop down
         //this.set("selectedPilotClass", null);
@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 
     selectedPilotClass: null,
 
-    filteredManeuverSets: computed("selectedPilotClass.id", function() {
+    filteredManeuverSets: computed("content.maneuversets.[]", "selectedPilotClass.id", function() {
 
         let selectedPilotClassId = get(this, "selectedPilotClass.id");
         if (Ember.isNone(selectedPilotClassId)) {
@@ -54,7 +54,7 @@ export default Ember.Component.extend({
 
     selectedManeuverSet: null,
 
-    filteredManeuvers: computed("selectedManeuverSet.id", function() {
+    filteredManeuvers: computed("content.maneuvers.[]", "selectedManeuverSet.id", function() {
 
         let selectedManeuverSetId = get(this, "selectedManeuverSet.id");
         if (Ember.isNone(selectedManeuverSetId)) {
@@ -88,13 +88,18 @@ export default Ember.Component.extend({
             let atype = get(this, "selectedAircraftType");
             let pilotclass = get(this, "selectedPilotClass");
             let maneuverset = get(this, "selectedManeuverSet");
-            console.log(pilotclass);
+            let nextOrder = +get(this, "filteredManeuvers.length") + 1;
+
             if (isPresent(name)) {
                 var newManeuver = this.get("store").createRecord('maneuver', {
                     name: name,
                     aircrafttype: atype,
                     pilotclass: pilotclass,
-                    maneuverset: maneuverset
+                    maneuverset: maneuverset,
+                    order: nextOrder,
+                    minscore: get(this, "minscore"),
+                    maxscore: get(this, "maxscore"),
+                    kfactor: get(this, "kfactor")
                 });
 
                 newManeuver.save().then(() => {

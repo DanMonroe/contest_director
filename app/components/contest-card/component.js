@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed, Component, get, inject, isPresent } = Ember;
+const { computed, Component, get, set, inject, isPresent } = Ember;
 
 export default Component.extend({
 
@@ -14,18 +14,21 @@ export default Component.extend({
     selectedPilot: null,
 
     selectPilotLabelCallback(item) {
-        return item.get('fullName');
+        return get(item, 'fullName');
     },
 
     selectLabelCallback(item) {
-        return item.get('name');
+        return get(item, 'name');
     },
 
 
     filteredPilotClasses: computed('contest.aircrafttype', function() {
-        return this.get("store").query('pilotclass', {filter: {aircrafttypeId: this.get("contest.aircrafttypeId")}});
+        return get(this, "store").query('pilotclass', {filter: {aircrafttypeId: get(this, "contest.aircrafttypeId")}});
     }),
 
+    totalRegistrations: computed("contestregistrations.[]", function() {
+        return get(this, "contestregistrations.length");
+    }),
 
     actions: {
         toggleRegistration() {
@@ -33,27 +36,19 @@ export default Component.extend({
         },
 
         saveRegistration() {
-            let pilot = get(this, "selectedPilot");
-            let pilotclass = get(this, "selectedPilotClass");
-            let thisContest = this.get("contest");
+            let params = {
+                pilot: get(this, "selectedPilot"),
+                pilotclass: get(this, "selectedPilotClass"),
+                contest: get(this, "contest")
+            };
 
-            if (isPresent(pilot) && isPresent(pilotclass)) {
-                var newRegistration = this.get("store").createRecord('contestregistration', {
-                    contest: thisContest,
-                    pilot: pilot,
-                    pilotname: pilot.get('fullName'),
-                    pilotclass: pilotclass
-                });
-
-                newRegistration.save().then(() => {
-                    this.set("selectedPilot", null);
+            if (isPresent(params.pilot) && isPresent(params.pilotclass)) {
+                const promise = get(this, 'onRegisterPilot')(params);
+                promise.then(() => {
+                    set(this, "selectedPilot", null);
                     this.toggleProperty("isRegistering");
                 });
-
             }
-
-
-            //this.toggleProperty("isRegistering");
         }
     }
 });

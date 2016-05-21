@@ -88,8 +88,8 @@
                 {{paper-input flex=true label="Maneuver Name" onChange=(action (mut name)) value=name required=true errorMessages=(hash required="Name is required")}}
             {{/card.content}}
             {{#card.content class="layout-row layout-align-space-between"}}
-                {{paper-input label="Min Score" type=number onChange=(action (mut minScore)) value=minScore required=true errorMessages=(hash required="Minimum score is required")}}
-                {{paper-input label="Max Score" type=number onChange=(action (mut maxScore)) value=maxScore required=true errorMessages=(hash required="Maximum score is required")}}
+                {{paper-input label="Min Score" type=number onChange=(action (mut minscore)) value=minscore required=true errorMessages=(hash required="Minimum score is required")}}
+                {{paper-input label="Max Score" type=number onChange=(action (mut maxscore)) value=maxscore required=true errorMessages=(hash required="Maximum score is required")}}
                 {{paper-input label="Multiplier" type=number onChange=(action (mut kfactor)) value=kfactor required=true errorMessages=(hash required="Multiplie is required")}}
             {{/card.content}}
 

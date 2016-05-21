@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
     addButtonDisabled: computed.not("selectedAircraftType"),
 
-    filteredPilotClasses: computed("selectedAircraftType.id", function() {
+    filteredPilotClasses: computed("content.pilotclasses.[]", "selectedAircraftType.id", function() {
 
         let selectedAircraftId = get(this, "selectedAircraftType.id");
         if (Ember.isNone(selectedAircraftId)) {
