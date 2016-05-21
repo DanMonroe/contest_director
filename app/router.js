@@ -26,15 +26,10 @@ Router.map(function () {
   });
 
   //this.route('round');
-  this.route('maneuversets');
-  this.route('maneuvers', {path: '/maneuverset/:maneuverset_id/maneuvers'});
   this.route('pilotscores', {path: '/contest/:contest_id/pilotclass/:pilotclass_id/round/:round_id/pilotscore/:contestregistration_id'}, function () {
 
   });
 
-
-  this.route('pilots');
-  this.route('aircrafttypes');
 
   this.route('auth', function() {
     this.route('login');
