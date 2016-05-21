@@ -6,11 +6,11 @@ export default Ember.Route.extend({
             contest: this.store.peekRecord('contest', params.contest_id),
             pilotclass: this.store.peekRecord('pilotclass', params.pilotclass_id),
             round: this.store.peekRecord('round', params.round_id),
-            registration: this.store.peekRecord('registration', params.registration_id),
+            contestregistration: this.store.peekRecord('contestregistration', params.contestregistration_id),
             roundscore: this.store.queryRecord('roundscore',
                 {
                     filter: {
-                        registrationId: params.registration_id,
+                        contestregistrationId: params.contestregistration_id,
                         roundId: params.round_id
                     }
                 }
@@ -18,7 +18,7 @@ export default Ember.Route.extend({
             maneuverscores: this.store.query('maneuverscore',
                 {
                     filter: {
-                        registrationId: params.registration_id,
+                        contestregistrationId: params.contestregistration_id,
                         roundId: params.round_id
                     }
                 }

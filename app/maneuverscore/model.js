@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-    registration: DS.belongsTo('registration', { async: false }),
+    contestregistration: DS.belongsTo('contestregistration', { async: false }),
     round: DS.belongsTo('round', { async: false }),
     maneuver: DS.belongsTo('maneuver', { async: false }),
     roundscore: DS.belongsTo('roundscore', { async: false }),

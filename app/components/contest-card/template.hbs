@@ -8,6 +8,58 @@
 
 <md-content class="md-padding">
 
+
+    {{#if isRegistering}}
+        {{#paper-card as |card|}}
+            {{#card.title as |title|}}
+                {{#title.text as |text|}}
+                    {{#text.headline}}New Registration{{/text.headline}}
+                {{/title.text}}
+            {{/card.title}}
+
+            {{#card.content class="layout-row layout-align-space-between"}}
+
+            {{#paper-select
+                placeholder="Pilot"
+                value=selectedPilot
+                itemLabelCallback=selectPilotLabelCallback
+                onChange=(action (mut selectedPilot))
+            }}
+                {{#each pilots as |pilot|}}
+                    {{#paper-option value=pilot}}
+                        {{pilot.fullName}}
+                    {{/paper-option}}
+                {{/each}}
+            {{/paper-select}}
+
+            {{#paper-select
+                placeholder="Pilot Class"
+                value=selectedPilotClass
+                itemLabelCallback=selectLabelCallback
+                onChange=(action (mut selectedPilotClass))
+            }}
+                {{#each filteredPilotClasses as |pilotclass|}}
+                    {{#paper-option value=pilotclass}}
+                        {{pilotclass.name}}
+                    {{/paper-option}}
+                {{/each}}
+            {{/paper-select}}
+
+            {{/card.content}}
+
+            {{#card.actions}}
+                {{#paper-button onClick=(action "toggleRegistration")}}Cancel{{/paper-button}}
+                {{#paper-button primary=true onClick=(action "saveRegistration")}}Register{{/paper-button}}
+            {{/card.actions}}
+
+        {{/paper-card}}
+    {{else}}
+        <p>
+            {{#paper-button onClick=(action "toggleRegistration")}}Register{{/paper-button}}
+        </p>
+
+    {{/if}}
+
     {{#paper-list}}
         {{#each filteredPilotClasses as |pilotclass|}}
 

@@ -13,7 +13,7 @@ export default Ember.Component.extend({
     showRegistrations: false,
 
     filteredRegistrations: computed('contest.id', 'pilotclass.id', function () {
-        return this.get("store").query('registration', {
+        return this.get("store").query('contestregistration', {
             filter: {
                 contestId: this.get("contest.id"),
                 pilotclassId: this.get("pilotclass.id")

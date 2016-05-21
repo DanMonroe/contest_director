@@ -5,5 +5,5 @@ export default Model.extend({
     name: DS.attr('string'),
     //aircrafttypeId: DS.attr('number'),
     aircrafttype: belongsTo(),
-    registrations: hasMany()
+    contestregistration: hasMany()
 });

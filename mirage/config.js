@@ -34,7 +34,7 @@ export default function () {
 
 
 
-    this.get('/api/contests/:id');
+    //this.get('/api/contests/:id');
 
     //this.post('/api/contests');
 
@@ -166,18 +166,18 @@ export default function () {
     //this.get('/api/pilots/:id');
 
 
-    this.get('/api/registrations', (db, request) => {
-        let registrations = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            registrations = db.registration.all();
-        } else {
-            let contestFilter = request.queryParams['filter[contestId]'];
-            let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
-            registrations = db.registration.where({contestId: contestFilter, pilotclassId: pilotclassFilter});
-        }
-
-        return registrations;
-    });
+    //this.get('/api/registrations', (db, request) => {
+    //    let registrations = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        registrations = db.registration.all();
+    //    } else {
+    //        let contestFilter = request.queryParams['filter[contestId]'];
+    //        let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
+    //        registrations = db.registration.where({contestId: contestFilter, pilotclassId: pilotclassFilter});
+    //    }
+    //
+    //    return registrations;
+    //});
 
     this.get('/api/maneuverscores', (db, request) => {
         let maneuverscores = [];
@@ -242,6 +242,7 @@ export default function () {
     this.passthrough('/api/maneuversets');
     this.passthrough('/api/maneuvers');
     this.passthrough('/api/pilots');
+    this.passthrough('/api/contestregistrations');
 
 }
 

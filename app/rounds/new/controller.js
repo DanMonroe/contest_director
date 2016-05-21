@@ -34,7 +34,7 @@ export default Controller.extend({
             }).then((maneuvers) => {
                 //console.log("maneuvers");
                 //console.log(maneuvers);
-                this.store.query('registration', {
+                this.store.query('contestregistration', {
                     filter: {
                         contestId: params.contest.id,
                         pilotclassId: params.pilotclass.id

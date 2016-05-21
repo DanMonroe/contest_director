@@ -5,5 +5,5 @@ export default DS.Model.extend({
   slug: DS.attr('string'),
   aircrafttypeId: DS.attr(),
   //aircrafttype: DS.belongsTo('aircrafttype'),
-  registrations: DS.hasMany('registration', {async:true})
+  contestregistrations: DS.hasMany('contestregistration', {async:true})
 });

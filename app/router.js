@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function () {
   this.route('contest', {path: '/contest/:contest_id'}, function () {
     this.route('registration', {
-        path: '/pilotclass/:pilotclass_id/registration'
+        path: '/pilotclass/:pilotclass_id/contestregistration'
     });
 
     //this.route('round', {path: '/pilotclass/:pilotclass_id/round/:round_id'}, function () {
@@ -28,7 +28,7 @@ Router.map(function () {
   //this.route('round');
   this.route('maneuversets');
   this.route('maneuvers', {path: '/maneuverset/:maneuverset_id/maneuvers'});
-  this.route('pilotscores', {path: '/contest/:contest_id/pilotclass/:pilotclass_id/round/:round_id/pilotscore/:registration_id'}, function () {
+  this.route('pilotscores', {path: '/contest/:contest_id/pilotclass/:pilotclass_id/round/:round_id/pilotscore/:contestregistration_id'}, function () {
 
   });
 

@@ -2,7 +2,7 @@ import { Model, belongsTo, hasMany } from 'ember-cli-mirage';
 import DS from 'ember-data';
 
 export default Model.extend({
-    registration: belongsTo(),
+    contestregistration: belongsTo(),
     round: belongsTo(),
     maneuver: belongsTo(),
     scores: hasMany(),
