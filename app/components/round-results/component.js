@@ -5,12 +5,12 @@ const { Component, computed, get, isPresent } = Ember;
 export default Component.extend({
     roundscores: null,
 
-    scoresSortingDesc: ['totalRoundScore:desc'],
+    scoresSortingDesc: ['totalroundscore:desc'],
     sortedScores: computed.sort('roundscores', 'scoresSortingDesc'),
 
     highScore: computed('sortedScores', function() {
         if(isPresent(get(this, 'sortedScores'))) {
-            return get(this, 'sortedScores.firstObject.totalRoundScore');
+            return get(this, 'sortedScores.firstObject.totalroundscore');
         }
         return 0;
     })

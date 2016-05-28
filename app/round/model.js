@@ -10,5 +10,6 @@ export default DS.Model.extend({
     roundscores: DS.hasMany('roundscore', { async: false }),
     numjudges: DS.attr('number'),
     drophigh: DS.attr('number'),
-    droplow: DS.attr('number')
+    droplow: DS.attr('number'),
+    order: DS.attr('number')
 });

@@ -79,20 +79,20 @@ export default function () {
     //});
     //this.get('/api/maneuvers/:id');
 
-    this.get('/api/rounds', (db, request) => {
-        let rounds = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            rounds = db.round.all();
-        } else {
-            let contestFilter = request.queryParams['filter[contestId]'];
-            let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
-            rounds = db.round.where({contestId: contestFilter, pilotclassId: pilotclassFilter});
-        }
-
-        return rounds;
-    });
-    this.get('/api/rounds/:id');
-    this.post('/api/rounds');
+    //this.get('/api/rounds', (db, request) => {
+    //    let rounds = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        rounds = db.round.all();
+    //    } else {
+    //        let contestFilter = request.queryParams['filter[contestId]'];
+    //        let pilotclassFilter = request.queryParams['filter[pilotclassId]'];
+    //        rounds = db.round.where({contestId: contestFilter, pilotclassId: pilotclassFilter});
+    //    }
+    //
+    //    return rounds;
+    //});
+    //this.get('/api/rounds/:id');
+    //this.post('/api/rounds');
 
 
 
@@ -179,56 +179,56 @@ export default function () {
     //    return registrations;
     //});
 
-    this.get('/api/maneuverscores', (db, request) => {
-        let maneuverscores = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            maneuverscores = db.maneuverscore.all();
-        } else {
-            let registrationFilter = request.queryParams['filter[registrationId]'];
-            let roundFilter = request.queryParams['filter[roundId]'];
-            maneuverscores = db.maneuverscore.where({registrationId: registrationFilter, roundId: roundFilter});
-        }
-
-        return maneuverscores;
-    });
-    this.get('/api/maneuverscores/:id');
-    this.post('/api/maneuverscores');
-
-    this.get('/api/roundscores', (db, request) => {
-        let roundscores = [];
-        if (Object.keys(request.queryParams).length === 0) {
-            roundscores = db.roundscore.all();
-        } else {
-            let registrationFilter = request.queryParams['filter[registrationId]'];
-            let roundFilter = request.queryParams['filter[roundId]'];
-            if(registrationFilter) {
-                roundscores = db.roundscore.where({registrationId: registrationFilter, roundId: roundFilter});
-            } else {
-                roundscores = db.roundscore.where({roundId: roundFilter});
-            }
-        }
-
-        return roundscores;
-    });
-    this.get('/api/roundscores/:id');
-    this.post('/api/roundscores');
-    this.patch('/api/roundscores/:id');
-
-
-    this.get('/api/scores', (db, request) => {
-        let scores = [];
-        //if (Object.keys(request.queryParams).length === 0) {
-            scores = db.score.all();
-        //} else {
-        //    let maneuverscoreFilter = request.queryParams['filter[maneuverscoreId]'];
-        //    scores = db.score.where({maneuverscoreId: maneuverscoreFilter});
-        //}
-
-        return scores;
-    });
-    this.get('/api/scores/:id');
-    this.post('/api/scores');
-    this.patch('/api/scores/:id');
+    //this.get('/api/maneuverscores', (db, request) => {
+    //    let maneuverscores = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        maneuverscores = db.maneuverscore.all();
+    //    } else {
+    //        let registrationFilter = request.queryParams['filter[registrationId]'];
+    //        let roundFilter = request.queryParams['filter[roundId]'];
+    //        maneuverscores = db.maneuverscore.where({registrationId: registrationFilter, roundId: roundFilter});
+    //    }
+    //
+    //    return maneuverscores;
+    //});
+    //this.get('/api/maneuverscores/:id');
+    //this.post('/api/maneuverscores');
+    //
+    //this.get('/api/roundscores', (db, request) => {
+    //    let roundscores = [];
+    //    if (Object.keys(request.queryParams).length === 0) {
+    //        roundscores = db.roundscore.all();
+    //    } else {
+    //        let registrationFilter = request.queryParams['filter[registrationId]'];
+    //        let roundFilter = request.queryParams['filter[roundId]'];
+    //        if(registrationFilter) {
+    //            roundscores = db.roundscore.where({registrationId: registrationFilter, roundId: roundFilter});
+    //        } else {
+    //            roundscores = db.roundscore.where({roundId: roundFilter});
+    //        }
+    //    }
+    //
+    //    return roundscores;
+    //});
+    //this.get('/api/roundscores/:id');
+    //this.post('/api/roundscores');
+    //this.patch('/api/roundscores/:id');
+    //
+    //
+    //this.get('/api/scores', (db, request) => {
+    //    let scores = [];
+    //    //if (Object.keys(request.queryParams).length === 0) {
+    //        scores = db.score.all();
+    //    //} else {
+    //    //    let maneuverscoreFilter = request.queryParams['filter[maneuverscoreId]'];
+    //    //    scores = db.score.where({maneuverscoreId: maneuverscoreFilter});
+    //    //}
+    //
+    //    return scores;
+    //});
+    //this.get('/api/scores/:id');
+    //this.post('/api/scores');
+    //this.patch('/api/scores/:id');
 
 
     //this.namespace = 'api';
@@ -243,6 +243,10 @@ export default function () {
     this.passthrough('/api/maneuvers');
     this.passthrough('/api/pilots');
     this.passthrough('/api/contestregistrations');
+    this.passthrough('/api/rounds');
+    this.passthrough('/api/roundscores');
+    this.passthrough('/api/maneuverscores');
+    this.passthrough('/api/scores');
 
 }
 

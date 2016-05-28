@@ -20,77 +20,82 @@ export default Controller.extend({
             droplow: params.droplow,
             maneuverset: params.maneuverset,
             contest: params.contest,
-            pilotclass: params.pilotclass
+            pilotclass: params.pilotclass,
+            order:1
         });
 
-        //newRound.save();
-        yield newRound.save().then(() => {
-            //console.log("new round id:" + get(newRound, "id"));
-
-            this.store.query('maneuver', {
-                filter: {
-                    maneuversetId: params.maneuverset.id
-                }
-            }).then((maneuvers) => {
-                //console.log("maneuvers");
-                //console.log(maneuvers);
-                this.store.query('contestregistration', {
-                    filter: {
-                        contestId: params.contest.id,
-                        pilotclassId: params.pilotclass.id
-                    }
-                }).then((registrations) => {
-
-                    registrations.forEach((registration) => {
-                        //console.log(registration.get('pilot.fullName'));
-
-                        let newRoundscore = get(this, "store").createRecord('roundscore', {
-                            registration: registration,
-                            round: newRound,
-                            totalRoundScore: 0
-                        });
-
-                        newRoundscore.save().then(() => {
-
-                            maneuvers.forEach((maneuver) => {
-                                //console.log(maneuver.get('name'));
-
-                                let newManeuverscore = get(this, "store").createRecord('maneuverscore', {
-                                    maneuver: maneuver,
-                                    registration: registration,
-                                    round: newRound,
-                                    roundscore: newRoundscore,
-                                    totalScore: 0
-                                });
-
-                                newManeuverscore.save().then(() => {
-                                    //debugger;
-                                    //console.log("new maneuverscore id = " + get(newManeuverscore, "id"));
-
-
-                                    for(let i = 0; i < params.numjudges; i++) {
-
-                                        let newscore = get(this, "store").createRecord('score', {
-                                            points: 0,
-                                            maneuverscore: newManeuverscore
-                                        });
-
-                                        newscore.save().then(() => {
-                                            //console.log("new score id = " + get(newscore, "id"));
-
-                                        });
-                                    }
-
-                                });
-
-                            }); // foreach maneuver
-                        }); // new roundscore
-                        //debugger;
-                    });  // for each registration
-                });
-//debugger;
-            });
+        //debugger;
+        newRound.save().then(() => {
+            debugger;
         });
+//        yield newRound.save().then(() => {
+//            //console.log("new round id:" + get(newRound, "id"));
+//
+//            this.store.query('maneuver', {
+//                filter: {
+//                    maneuversetId: params.maneuverset.id
+//                }
+//            }).then((maneuvers) => {
+//                //console.log("maneuvers");
+//                //console.log(maneuvers);
+//                this.store.query('contestregistration', {
+//                    filter: {
+//                        contestId: params.contest.id,
+//                        pilotclassId: params.pilotclass.id
+//                    }
+//                }).then((registrations) => {
+//
+//                    registrations.forEach((registration) => {
+//                        //console.log(registration.get('pilot.fullName'));
+//
+//                        let newRoundscore = get(this, "store").createRecord('roundscore', {
+//                            registration: registration,
+//                            round: newRound,
+//                            totalroundscore: 0
+//                        });
+//
+//                        newRoundscore.save().then(() => {
+//
+//                            maneuvers.forEach((maneuver) => {
+//                                //console.log(maneuver.get('name'));
+//
+//                                // TODO remove registration and round ?:
+//                                let newManeuverscore = get(this, "store").createRecord('maneuverscore', {
+//                                    maneuver: maneuver,
+//                                    registration: registration,
+//                                    round: newRound,
+//                                    roundscore: newRoundscore,
+//                                    totalScore: 0
+//                                });
+//
+//                                newManeuverscore.save().then(() => {
+//                                    //debugger;
+//                                    //console.log("new maneuverscore id = " + get(newManeuverscore, "id"));
+//
+//
+//                                    for(let i = 0; i < params.numjudges; i++) {
+//
+//                                        let newscore = get(this, "store").createRecord('score', {
+//                                            points: 0,
+//                                            maneuverscore: newManeuverscore
+//                                        });
+//
+//                                        newscore.save().then(() => {
+//                                            //console.log("new score id = " + get(newscore, "id"));
+//
+//                                        });
+//                                    }
+//
+//                                });
+//
+//                            }); // foreach maneuver
+//                        }); // new roundscore
+//                        //debugger;
+//                    });  // for each registration
+//                });
+////debugger;
+//            });
+//        });
 
 
 //console.log("create done");

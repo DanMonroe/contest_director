@@ -21,7 +21,7 @@ export default Component.extend({
         });
 
         if(isPresent(get(this, 'roundscore'))) {
-            this.set('roundscore.totalRoundScore', roundScore);
+            this.set('roundscore.totalroundscore', roundScore);
             get(this, 'roundscore').save();
         }
 
@@ -39,12 +39,12 @@ export default Component.extend({
                 console.log('rounds:');
                 console.log(rounds);
 
-                let maxScore = Math.max(...rounds.content.mapBy('_data.totalRoundScore'));
+                let maxScore = Math.max(...rounds.content.mapBy('_data.totalroundscore'));
 
                 rounds.forEach((thisRound) => {
                     //debugger;
-                    let normalizedScore = this.normalizeScore(thisRound.get('totalRoundScore'), maxScore);
-                    thisRound.set('normalizedScore', normalizedScore);
+                    let normalizedscore = this.normalizeScore(thisRound.get('totalroundscore'), maxScore);
+                    thisRound.set('normalizedscore', normalizedscore);
                     thisRound.save();
                 });
 
