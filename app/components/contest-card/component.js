@@ -7,6 +7,7 @@ export default Component.extend({
     store: inject.service(),
 
     contest: null,
+    rounds: null,
 
     isRegistering: false,
 
