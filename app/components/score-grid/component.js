@@ -45,7 +45,8 @@ export default Component.extend({
                     //debugger;
                     let normalizedscore = this.normalizeScore(thisRound.get('totalroundscore'), maxScore);
                     thisRound.set('normalizedscore', normalizedscore);
-                    thisRound.save();
+// TODO uncomment save
+                    //thisRound.save();
                 });
 
             });

@@ -2,10 +2,13 @@
     {{#paper-card-content}}
         <h3>{{model.contest.name}}</h3>
         <h3>{{model.pilotclass.name}}</h3>
-        <h3>{{model.round.name}}</h3>
+        <h3>{{model.round.firstObject.name}}</h3>
+
         {{#paper-list}}
 {{#each model.registeredpilots as |registeredpilot|}}
-    <p>{{registeredpilot.pilot.fullName}} - {{#link-to "pilotscores" model.contest.id model.pilotclass.id model.round.id registeredpilot.id}}Scores{{/link-to}}</p>
+    <p>
+        {{registeredpilot.pilot.fullName}} - {{#link-to "pilotscores" model.contest.id model.pilotclass.id model.round.firstObject.id registeredpilot.id}}Scores{{/link-to}}
+    </p>
 {{/each}}
         {{/paper-list}}
     {{/paper-card-content}}

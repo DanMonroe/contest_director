@@ -2,11 +2,16 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
     model(params) {
+
         return Ember.RSVP.hash({
+            round: this.store.findRecord('round', params.round_id),
+
             contest: this.store.peekRecord('contest', params.contest_id),
+
             pilotclass: this.store.peekRecord('pilotclass', params.pilotclass_id),
-            round: this.store.peekRecord('round', params.round_id),
-            contestregistration: this.store.peekRecord('contestregistration', params.contestregistration_id),
+
+            contestregistration: this.store.findRecord('contestregistration', params.contestregistration_id),
+
             roundscore: this.store.queryRecord('roundscore',
                 {
                     filter: {
