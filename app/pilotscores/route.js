@@ -19,15 +19,15 @@ export default Ember.Route.extend({
                         roundId: params.round_id
                     }
                 }
-            ),
-            maneuverscores: this.store.query('maneuverscore',
-                {
-                    filter: {
-                        contestregistrationId: params.contestregistration_id,
-                        roundId: params.round_id
-                    }
-                }
             )
+            //maneuverscores: this.store.query('maneuverscore',
+            //    {
+            //        filter: {
+            //            contestregistrationId: params.contestregistration_id,
+            //            roundId: params.round_id
+            //        }
+            //    }
+            //)
         });
     }
 

@@ -20,7 +20,7 @@ export default Ember.Component.extend({
     displayScores: Ember.computed('maneuverscore.scores.@each.points', function () {
 //debugger;
 
-console.log("displayScores");
+//console.log("displayScores");
         let scores = this.get('maneuverscore.scores');
         if (Ember.isPresent(scores)) {
 

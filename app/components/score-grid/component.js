@@ -12,7 +12,6 @@ export default Component.extend({
 
     totalScoreList: computed.mapBy('maneuverscores', 'totalScore'),
 
-    //totalRoundScoreFromManeuvers: computed.sum('totalScoreList')
     totalRoundScoreFromManeuvers: computed('totalScoreList', function() {
 
         let roundScore = 0;
@@ -22,7 +21,8 @@ export default Component.extend({
 
         if(isPresent(get(this, 'roundscore'))) {
             this.set('roundscore.totalroundscore', roundScore);
-            get(this, 'roundscore').save();
+// TODO uncomment
+//get(this, 'roundscore').save();
         }
 
         this.updateNormalizedScores();
@@ -36,8 +36,6 @@ export default Component.extend({
         get(this, 'store')
             .query('roundscore', {filter: {roundId: roundId}})
             .then((rounds) => {
-                console.log('rounds:');
-                console.log(rounds);
 
                 let maxScore = Math.max(...rounds.content.mapBy('_data.totalroundscore'));
 
