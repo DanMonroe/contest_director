@@ -1,6 +1,7 @@
 {{input
     value=(mut score.points)
     id=(concat "score_" rowIndex "_" columnIndex)
-    enter=(action "updateScore" score)
-    change=(action "changeScore" score)
+    action="inputEnter"
+    key-press="keyPressed"
+    tabindex=tabIndex
 }}

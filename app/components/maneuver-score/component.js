@@ -22,6 +22,7 @@ export default Ember.Component.extend({
 
 //console.log("displayScores");
         let scores = this.get('maneuverscore.scores');
+//console.log(scores);
         if (Ember.isPresent(scores)) {
 
             var numLowToDrop = +this.get('maneuverscore.round.droplow'),
@@ -83,22 +84,22 @@ export default Ember.Component.extend({
         return totalScore;
     }),
 
-    moveFocus: (numManeuvers, numJudges, rowIndex, columnIndex) => {
-        //debugger;
-
-        rowIndex++;
-
-        if(rowIndex >= numManeuvers) {
-            rowIndex = 0;
-            columnIndex++;
-        }
-
-        if(columnIndex >= numJudges) {
-            columnIndex = 0;
-        }
-
-        Ember.$('#score_' + rowIndex + '_' + columnIndex).focus();
-    },
+    //moveFocus: (numManeuvers, numJudges, rowIndex, columnIndex) => {
+    //    //debugger;
+    //
+    //    rowIndex++;
+    //
+    //    if(rowIndex >= numManeuvers) {
+    //        rowIndex = 0;
+    //        columnIndex++;
+    //    }
+    //
+    //    if(columnIndex >= numJudges) {
+    //        columnIndex = 0;
+    //    }
+    //
+    //    Ember.$('#score_' + rowIndex + '_' + columnIndex).focus();
+    //},
 
     actions: {
         updateScore(/*displayScore, rowIndex, columnIndex*/) {

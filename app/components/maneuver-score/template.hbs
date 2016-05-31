@@ -4,6 +4,7 @@
 {{#each displayScores as |score index|}}
     {{judge-score
         score=score
+        numManeuvers=numManeuvers
         columnIndex=index
         rowIndex=rowIndex
         updateScore=(action 'updateScore')

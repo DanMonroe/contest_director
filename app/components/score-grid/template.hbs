@@ -8,7 +8,7 @@
         <th class="judgeHeader">Total</th>
     </tr>
     {{#each maneuverscores as |maneuverscore index|}}
-        {{maneuver-score maneuverscore=maneuverscore rowIndex=index}}
+        {{maneuver-score maneuverscore=maneuverscore rowIndex=index numManeuvers=maneuverscores.length}}
     {{/each}}
 
     <tr class="score-grid-footer">
@@ -16,10 +16,10 @@
             Drop Low:<span class="legend low">{{round.droplow}}</span>
             Drop High:<span class="legend high">{{round.drophigh}}</span>
         </td>
-        <td colSpan="5" style="text-align: right;">
+        <td colSpan="{{roundScoreColSpan judges.length}}" class="manName">
             Total Rounds Score:
         </td>
-        <td class="calcTotal">{{totalRoundScoreFromManeuvers}}</td>
+        <td class="totalScore">{{totalRoundScoreFromManeuvers}}</td>
     </tr>
 </table>
 <p>

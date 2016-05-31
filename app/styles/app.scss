@@ -165,9 +165,13 @@ md-content.md-padding {
   @extend .pad5margin5;
   text-align: center;
 }
-.manKFactor, .calcTotal{
+.manKFactor, .calcTotal {
   @extend .pad5margin5;
   width: 50px;
+}
+.totalScore {
+  @extend .calcTotal;
+  font-weight: bold;
 }
 .manName {
   @extend .pad5margin5;
